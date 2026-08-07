@@ -3,215 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inferno Loader</title>
+
+<title>Inferno</title>
 
 <style>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
-    }
+:root{
+    --background:#050505;
+    --background2:#0d0d0d;
+    --red:#8a0b0b;
+    --bright:#ff5a36;
+    --ember:#ff9b3d;
+    --white:#f2f2f2;
+    --gray:#9b9b9b;
+}
 
-    body {
-        background: radial-gradient(circle at center,
-                #1a0000 0%,
-                #0a0a0a 45%,
-                #000000 100%);
-        overflow: hidden;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Segoe UI,sans-serif;
+}
 
-    .container {
-        text-align: center;
-    }
+body{
+    overflow:hidden;
+    height:100vh;
 
-    /* =========================
-       INFERNO TITLE
-    ========================= */
+    background:
+        radial-gradient(circle at center,
+        #170606 0%,
+        #0b0b0b 45%,
+        #000 100%);
 
-    .title {
-        font-size: 4rem;
-        font-weight: 900;
-        letter-spacing: 10px;
-        margin-bottom: 40px;
-        text-transform: uppercase;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-        background: linear-gradient(
-            180deg,
-            #fff7c5,
-            #ffcb45,
-            #ff7b00,
-            #ff3000,
-            #7a0000
-        );
+.container{
+    text-align:center;
+}
 
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+.title{
+    font-size:4rem;
+    font-weight:700;
+    letter-spacing:14px;
 
-        animation:
-            fireGlow 3s infinite ease-in-out,
-            flameMove 5s infinite linear;
-    }
+    color:var(--white);
 
-    @keyframes flameMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+    text-shadow:
+        0 0 10px rgba(255,90,54,.4),
+        0 0 25px rgba(255,90,54,.25);
 
-    @keyframes fireGlow {
+    animation:glow 3s infinite alternate;
+}
 
-        0% {
-            filter:
-                drop-shadow(0 0 8px #ff3300)
-                drop-shadow(0 0 15px #ff6600);
-        }
+.spinner{
+    position:relative;
 
-        50% {
-            filter:
-                drop-shadow(0 0 18px #ff7700)
-                drop-shadow(0 0 35px #ff2200);
-        }
+    width:220px;
+    height:220px;
 
-        100% {
-            filter:
-                drop-shadow(0 0 8px #ff3300)
-                drop-shadow(0 0 15px #ff6600);
-        }
-    }
+    margin:40px auto;
+}
 
-    /* =========================
-       SPINNER
-    ========================= */
+.ring{
+    position:absolute;
 
-    .spinner-container {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        margin: auto;
-    }
+    inset:0;
 
-    .outer-ring,
-    .middle-ring,
-    .inner-ring {
-        position: absolute;
-        border-radius: 50%;
-    }
+    border-radius:50%;
 
-    .outer-ring {
-        width: 180px;
-        height: 180px;
-        border-top: 8px solid #ff9900;
-        border-right: 8px solid #ff3300;
-        border-left: 8px solid transparent;
-        border-bottom: 8px solid transparent;
+    border:2px solid transparent;
 
-        animation: rotateClockwise 3s linear infinite;
+    border-top-color:var(--bright);
+    border-right-color:var(--red);
 
-        box-shadow:
-            0 0 20px #ff3300,
-            0 0 50px #ff6600;
-    }
+    animation:spin 6s linear infinite;
 
-    .middle-ring {
-        top: 25px;
-        left: 25px;
+    box-shadow:
+        0 0 20px rgba(255,80,50,.2);
+}
 
-        width: 130px;
-        height: 130px;
+.ring2{
+    inset:20px;
 
-        border-top: 6px solid #ffd000;
-        border-right: 6px solid #ff5500;
-        border-left: 6px solid transparent;
-        border-bottom: 6px solid transparent;
+    animation-direction:reverse;
+    animation-duration:4s;
+}
 
-        animation: rotateCounter 2.2s linear infinite;
-    }
+.core{
 
-    .inner-ring {
-        top: 50px;
-        left: 50px;
+    position:absolute;
 
-        width: 80px;
-        height: 80px;
+    top:50%;
+    left:50%;
 
-        background: radial-gradient(
+    width:90px;
+    height:90px;
+
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+
+    background:
+        radial-gradient(
             circle,
-            #fff3b0,
-            #ff8c00,
-            #ff3300,
-            #3d0000
+            #ffd8a6,
+            #ff743d,
+            #4d0b0b
         );
 
-        box-shadow:
-            0 0 40px #ff4400,
-            0 0 80px #ff1100;
+    box-shadow:
+        0 0 30px rgba(255,115,50,.5),
+        0 0 80px rgba(255,90,54,.2);
 
-        animation:
-            pulse 1.5s infinite alternate,
-            flicker 0.2s infinite;
+    animation:pulse 2s infinite ease-in-out;
+}
+
+.loading{
+    color:var(--white);
+    font-size:14px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.status{
+    margin-top:15px;
+    color:var(--gray);
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
     }
 
-    @keyframes rotateClockwise {
-        from {
-            transform: rotate(0deg);
-        }
+    to{
+        transform:rotate(360deg);
+    }
+}
 
-        to {
-            transform: rotate(360deg);
-        }
+@keyframes pulse{
+
+    0%{
+        transform:translate(-50%,-50%) scale(.95);
     }
 
-    @keyframes rotateCounter {
-        from {
-            transform: rotate(360deg);
-        }
+    100%{
+        transform:translate(-50%,-50%) scale(1.08);
+    }
+}
 
-        to {
-            transform: rotate(0deg);
-        }
+@keyframes glow{
+
+    from{
+        opacity:.8;
     }
 
-    @keyframes pulse {
-        from {
-            transform: scale(0.95);
-        }
-
-        to {
-            transform: scale(1.08);
-        }
+    to{
+        opacity:1;
     }
-
-    @keyframes flicker {
-
-        0% { opacity: 0.90; }
-        50% { opacity: 1; }
-        100% { opacity: 0.92; }
-    }
-
-    /* =========================
-       LOADING TEXT
-    ========================= */
-
-    .loading {
-        margin-top: 40px;
-        color: white;
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-    }
-
-    .status {
-        color: #cccccc;
-        margin-top: 10px;
-        opacity: 0.9;
-    }
+}
 
 </style>
 </head>
@@ -220,19 +172,25 @@
 
 <div class="container">
 
-    <div class="title">Inferno</div>
+    <div class="title">
+        INFERNO
+    </div>
 
-    <div class="spinner-container">
+    <div class="spinner">
 
-        <div class="outer-ring"></div>
-        <div class="middle-ring"></div>
-        <div class="inner-ring"></div>
+        <div class="ring"></div>
+
+        <div class="ring ring2"></div>
+
+        <div class="core"></div>
 
     </div>
 
-    <div class="loading">Initializing engine...</div>
+    <div class="loading">
+        INITIALIZING
+    </div>
 
-    <div class="status" id="statusText">
+    <div class="status" id="status">
         Loading assets...
     </div>
 
@@ -240,44 +198,37 @@
 
 <script>
 
-    const messages = [
-        "Loading assets...",
-        "Loading textures...",
-        "Loading files...",
-        "Preparing engine...",
-        "Synchronizing modules...",
-        "Connecting systems..."
-    ];
+const messages = [
+    "Loading assets...",
+    "Loading textures...",
+    "Loading modules...",
+    "Building cache...",
+    "Initializing engine..."
+];
 
-    let index = 0;
+let index = 0;
 
-    setInterval(() => {
+setInterval(() => {
 
-        index++;
+    index++;
 
-        document.getElementById("statusText").textContent =
-            messages[index % messages.length];
+    document.getElementById("status").innerText =
+        messages[index % messages.length];
 
-    }, 2000);
+}, 2000);
 
-    // ====================================================
-    // C# COMMUNICATION BRIDGE (WebView2)
-    // ====================================================
+function sendToCSharp(message){
 
-    function sendToCSharp(message) {
+    if(window.chrome?.webview){
 
-        if (window.chrome &&
-            window.chrome.webview) {
-
-            window.chrome.webview.postMessage(message);
-        }
+        window.chrome.webview.postMessage(message);
     }
+}
 
-    function receiveFromCSharp(data) {
+function receiveFromCSharp(message){
 
-        document.getElementById("statusText")
-            .textContent = data;
-    }
+    document.getElementById("status").innerText = message;
+}
 
 </script>
 
