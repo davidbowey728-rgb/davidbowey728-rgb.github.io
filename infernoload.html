@@ -1,73 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Inferno</title>
 
 <style>
 
 :root{
+
     --background:#050505;
     --background2:#0d0d0d;
+
+    --card:#111111;
+
+    --border:#222;
+
     --red:#8a0b0b;
+
     --bright:#ff5a36;
+
     --ember:#ff9b3d;
+
     --white:#f2f2f2;
-    --gray:#9b9b9b;
+
+    --gray:#888;
 }
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,Segoe UI,sans-serif;
+
+    font-family:
+        Inter,
+        Segoe UI,
+        sans-serif;
 }
 
 body{
-    overflow:hidden;
-    height:100vh;
 
     background:
-        radial-gradient(circle at center,
-        #170606 0%,
-        #0b0b0b 45%,
-        #000 100%);
+        radial-gradient(
+            circle at center,
+            #170606,
+            #090909,
+            #000000
+        );
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* ------------------------------------------------ */
+/* LOADER                                           */
+/* ------------------------------------------------ */
+
+#loader{
+
+    width:100vw;
+    height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 }
 
-.container{
+.loader-container{
+
     text-align:center;
 }
 
 .title{
+
     font-size:4rem;
-    font-weight:700;
+
     letter-spacing:14px;
 
-    color:var(--white);
+    margin-bottom:40px;
 
     text-shadow:
         0 0 10px rgba(255,90,54,.4),
-        0 0 25px rgba(255,90,54,.25);
+        0 0 40px rgba(255,90,54,.2);
 
-    animation:glow 3s infinite alternate;
+    animation:
+        glow 3s infinite alternate;
 }
 
 .spinner{
-    position:relative;
 
     width:220px;
     height:220px;
 
-    margin:40px auto;
+    margin:auto;
+
+    position:relative;
 }
 
 .ring{
+
     position:absolute;
 
     inset:0;
@@ -77,33 +117,34 @@ body{
     border:2px solid transparent;
 
     border-top-color:var(--bright);
+
     border-right-color:var(--red);
 
-    animation:spin 6s linear infinite;
-
-    box-shadow:
-        0 0 20px rgba(255,80,50,.2);
+    animation:
+        spin 5s linear infinite;
 }
 
 .ring2{
+
     inset:20px;
 
     animation-direction:reverse;
-    animation-duration:4s;
 }
 
 .core{
 
-    position:absolute;
-
-    top:50%;
-    left:50%;
-
     width:90px;
     height:90px;
 
-    transform:translate(-50%,-50%);
     border-radius:50%;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
 
     background:
         radial-gradient(
@@ -114,31 +155,174 @@ body{
         );
 
     box-shadow:
-        0 0 30px rgba(255,115,50,.5),
+        0 0 30px rgba(255,90,54,.5),
         0 0 80px rgba(255,90,54,.2);
 
-    animation:pulse 2s infinite ease-in-out;
-}
-
-.loading{
-    color:var(--white);
-    font-size:14px;
-    letter-spacing:4px;
-    text-transform:uppercase;
+    animation:
+        pulse 2s infinite;
 }
 
 .status{
-    margin-top:15px;
-    color:var(--gray);
+
+    margin-top:30px;
+
+    color:#999;
+}
+
+/* ------------------------------------------------ */
+/* DASHBOARD                                        */
+/* ------------------------------------------------ */
+
+#dashboard{
+
+    display:none;
+
+    padding:40px;
+
+    max-width:1200px;
+
+    margin:auto;
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.header-title{
+
+    font-size:40px;
+
+    letter-spacing:8px;
+}
+
+.card{
+
+    background:rgba(15,15,15,.9);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+}
+
+.card h2{
+
+    margin-bottom:20px;
+}
+
+input{
+
+    width:100%;
+
+    margin-top:10px;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1a1a1a;
+
+    color:white;
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 18px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7d0808,
+            #ff5a36
+        );
+}
+
+button:hover{
+
+    opacity:.9;
+}
+
+.preview-container{
+
+    display:flex;
+
+    gap:20px;
+}
+
+.preview{
+
+    width:200px;
+    height:200px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    border:1px solid #333;
+
+    background:#111;
+}
+
+.flare-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.help{
+
+    width:25px;
+
+    height:25px;
+
+    border-radius:50%;
+}
+
+.launch{
+
+    width:100%;
+
+    padding:18px;
+
+    font-size:18px;
 }
 
 @keyframes spin{
 
     from{
+
         transform:rotate(0deg);
     }
 
     to{
+
         transform:rotate(360deg);
     }
 }
@@ -146,89 +330,564 @@ body{
 @keyframes pulse{
 
     0%{
-        transform:translate(-50%,-50%) scale(.95);
+
+        transform:
+            translate(-50%,-50%)
+            scale(.95);
     }
 
     100%{
-        transform:translate(-50%,-50%) scale(1.08);
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.05);
     }
 }
 
 @keyframes glow{
 
     from{
+
         opacity:.8;
     }
 
     to{
+
         opacity:1;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<div id="loader">
 
-    <div class="title">
-        INFERNO
-    </div>
+    <div class="loader-container">
 
-    <div class="spinner">
+        <div class="title">
 
-        <div class="ring"></div>
+            INFERNO
 
-        <div class="ring ring2"></div>
+        </div>
 
-        <div class="core"></div>
+        <div class="spinner">
 
-    </div>
+            <div class="ring"></div>
 
-    <div class="loading">
-        INITIALIZING
-    </div>
+            <div class="ring ring2"></div>
 
-    <div class="status" id="status">
-        Loading assets...
+            <div class="core"></div>
+
+        </div>
+
+        <div
+            class="status"
+            id="statusText">
+
+            Loading assets...
+
+        </div>
+
     </div>
 
 </div>
 
-<script>
+<div id="dashboard">
+
+    <div class="header">
+
+        <div class="header-title">
+
+            INFERNO
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Community URLs
+
+        </h2>
+
+        <div id="urlContainer">
+
+        </div>
+
+        <button
+            onclick="addUrl()">
+
+            Add URL
+
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Content
+
+        </h2>
+
+        <label>
+
+            Adjust Content Title
+
+        </label>
+
+        <input
+            id="contentTitle">
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Images
+
+        </h2>
+
+        <input
+            id="image1"
+            type="file">
+
+        <input
+            id="image2"
+            type="file">
+
+        <div class="preview-container">
+
+            <img
+                class="preview"
+                id="preview1">
+
+            <img
+                class="preview"
+                id="preview2">
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Flares
+
+            <button
+                class="help"
+                onclick="flareHelp()">
+
+                ?
+
+            </button>
+
+        </h2>
+
+        <div class="flare-row">
+
+            Flare 1
+
+            <input id="flare1">
+
+        </div>
+
+        <div class="flare-row">
+
+            Flare 2
+
+            <input id="flare2">
+
+        </div>
+
+        <div class="flare-row">
+
+            Flare 3
+
+            <input id="flare3">
+
+        </div>
+
+        <div class="flare-row">
+
+            Flare 4
+
+            <input id="flare4">
+
+        </div>
+
+    </div>
+
+    <button
+        class="launch"
+        onclick="launchApp()">
+
+        Launch Application
+
+    </button>
+
+</div>
+
+    <script>
+
+/* ===================================================== */
+/* STATUS MESSAGES                                       */
+/* ===================================================== */
 
 const messages = [
     "Loading assets...",
     "Loading textures...",
     "Loading modules...",
-    "Building cache...",
-    "Initializing engine..."
+    "Preparing engine...",
+    "Loading configuration...",
+    "Initializing interface..."
 ];
 
-let index = 0;
+let messageIndex = 0;
 
 setInterval(() => {
 
-    index++;
+    messageIndex++;
 
-    document.getElementById("status").innerText =
-        messages[index % messages.length];
+    document.getElementById("statusText").innerText =
+        messages[messageIndex % messages.length];
 
 }, 2000);
 
-function sendToCSharp(message){
+/* ===================================================== */
+/* LOADER TRANSITION                                     */
+/* ===================================================== */
 
-    if(window.chrome?.webview){
+function finishLoading() {
 
-        window.chrome.webview.postMessage(message);
+    document.getElementById("loader").style.display = "none";
+
+    document.getElementById("dashboard").style.display = "block";
+
+}
+
+/*
+    Temporary delay.
+
+    Your C# code will eventually call:
+
+    finishLoading();
+
+*/
+
+setTimeout(() => {
+
+    finishLoading();
+
+}, 6000);
+
+/* ===================================================== */
+/* LOCAL STORAGE                                         */
+/* ===================================================== */
+
+function saveSettings() {
+
+    const settings = {
+
+        contentTitle:
+            document.getElementById("contentTitle").value,
+
+        flare1:
+            document.getElementById("flare1").value,
+
+        flare2:
+            document.getElementById("flare2").value,
+
+        flare3:
+            document.getElementById("flare3").value,
+
+        flare4:
+            document.getElementById("flare4").value,
+
+        urls: collectUrls(),
+
+        image1:
+            localStorage.getItem("image1"),
+
+        image2:
+            localStorage.getItem("image2")
+    };
+
+    localStorage.setItem(
+        "inferno_settings",
+        JSON.stringify(settings)
+    );
+}
+
+function loadSettings() {
+
+    const data = localStorage.getItem(
+        "inferno_settings"
+    );
+
+    if (!data) {
+        return;
+    }
+
+    const settings = JSON.parse(data);
+
+    document.getElementById("contentTitle").value =
+        settings.contentTitle || "";
+
+    document.getElementById("flare1").value =
+        settings.flare1 || "";
+
+    document.getElementById("flare2").value =
+        settings.flare2 || "";
+
+    document.getElementById("flare3").value =
+        settings.flare3 || "";
+
+    document.getElementById("flare4").value =
+        settings.flare4 || "";
+
+    if (settings.image1) {
+
+        document.getElementById(
+            "preview1"
+        ).src = settings.image1;
+    }
+
+    if (settings.image2) {
+
+        document.getElementById(
+            "preview2"
+        ).src = settings.image2;
+    }
+
+    if (settings.urls) {
+
+        settings.urls.forEach(url => {
+
+            addUrl(url);
+
+        });
     }
 }
 
-function receiveFromCSharp(message){
+/* ===================================================== */
+/* COMMUNITY URLS                                        */
+/* ===================================================== */
 
-    document.getElementById("status").innerText = message;
+function collectUrls() {
+
+    const urls = [];
+
+    document.querySelectorAll(".community-url")
+        .forEach(input => {
+
+            urls.push(input.value);
+
+        });
+
+    return urls;
 }
+
+function addUrl(existingValue = "") {
+
+    const container =
+        document.getElementById(
+            "urlContainer"
+        );
+
+    const row =
+        document.createElement("div");
+
+    row.style.marginBottom = "10px";
+
+    const input =
+        document.createElement("input");
+
+    input.className = "community-url";
+
+    input.placeholder =
+        "https://example.com";
+
+    input.value = existingValue;
+
+    input.oninput = saveSettings;
+
+    const removeButton =
+        document.createElement("button");
+
+    removeButton.innerText = "Delete";
+
+    removeButton.style.marginTop = "5px";
+
+    removeButton.onclick = () => {
+
+        row.remove();
+
+        saveSettings();
+
+    };
+
+    row.appendChild(input);
+
+    row.appendChild(removeButton);
+
+    container.appendChild(row);
+
+    saveSettings();
+}
+
+/* ===================================================== */
+/* IMAGE HANDLING                                        */
+/* ===================================================== */
+
+function saveImage(inputId, previewId) {
+
+    const input =
+        document.getElementById(inputId);
+
+    const file =
+        input.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+
+        const imageData =
+            event.target.result;
+
+        document.getElementById(
+            previewId
+        ).src = imageData;
+
+        localStorage.setItem(
+            inputId,
+            imageData
+        );
+
+        saveSettings();
+    };
+
+    reader.readAsDataURL(file);
+}
+
+document
+    .getElementById("image1")
+    .addEventListener("change", () => {
+
+        saveImage(
+            "image1",
+            "preview1"
+        );
+
+    });
+
+document
+    .getElementById("image2")
+    .addEventListener("change", () => {
+
+        saveImage(
+            "image2",
+            "preview2"
+        );
+
+    });
+
+/* ===================================================== */
+/* FLARE HELP                                            */
+/* ===================================================== */
+
+function flareHelp() {
+
+    alert(
+
+`Flare values select an option.
+
+0 = First option
+1 = Second option
+2 = Third option
+3 = Fourth option
+4 = Fifth option
+
+Example:
+
+Flare 1 = 2
+
+This selects the third option.`
+
+    );
+}
+
+/* ===================================================== */
+/* APPLICATION LAUNCH                                    */
+/* ===================================================== */
+
+const launchUrl = "https://example.com";
+
+function launchApp() {
+
+    saveSettings();
+
+    window.location.href =
+        launchUrl;
+}
+
+/* ===================================================== */
+/* C# COMMUNICATION                                      */
+/* ===================================================== */
+
+function sendToCSharp(message) {
+
+    if (
+        window.chrome &&
+        window.chrome.webview
+    ) {
+
+        window.chrome.webview
+            .postMessage(message);
+    }
+}
+
+function receiveFromCSharp(message) {
+
+    console.log(
+        "Received:",
+        message
+    );
+
+    if (message === "loaded") {
+
+        finishLoading();
+    }
+}
+
+/* ===================================================== */
+/* AUTO SAVE                                             */
+/* ===================================================== */
+
+document.querySelectorAll("input")
+    .forEach(input => {
+
+        input.addEventListener(
+            "input",
+            saveSettings
+        );
+
+    });
+
+loadSettings();
 
 </script>
 
