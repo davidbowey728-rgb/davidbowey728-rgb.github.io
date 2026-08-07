@@ -1,895 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Inferno</title>
-
-<style>
-
-:root{
-
-    --background:#050505;
-    --background2:#0d0d0d;
-
-    --card:#111111;
-
-    --border:#222;
-
-    --red:#8a0b0b;
-
-    --bright:#ff5a36;
-
-    --ember:#ff9b3d;
-
-    --white:#f2f2f2;
-
-    --gray:#888;
-}
-
-*{
-
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-
-    font-family:
-        Inter,
-        Segoe UI,
-        sans-serif;
-}
-
-body{
-
-    background:
-        radial-gradient(
-            circle at center,
-            #170606,
-            #090909,
-            #000000
-        );
-
-    color:white;
-
-    overflow-x:hidden;
-}
-
-/* ------------------------------------------------ */
-/* LOADER                                           */
-/* ------------------------------------------------ */
-
-#loader{
-
-    width:100vw;
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-}
-
-.loader-container{
-
-    text-align:center;
-}
-
-.title{
-
-    font-size:4rem;
-
-    letter-spacing:14px;
-
-    margin-bottom:40px;
-
-    text-shadow:
-        0 0 10px rgba(255,90,54,.4),
-        0 0 40px rgba(255,90,54,.2);
-
-    animation:
-        glow 3s infinite alternate;
-}
-
-.spinner{
-
-    width:220px;
-    height:220px;
-
-    margin:auto;
-
-    position:relative;
-}
-
-.ring{
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:50%;
-
-    border:2px solid transparent;
-
-    border-top-color:var(--bright);
-
-    border-right-color:var(--red);
-
-    animation:
-        spin 5s linear infinite;
-}
-
-.ring2{
-
-    inset:20px;
-
-    animation-direction:reverse;
-}
-
-.core{
-
-    width:90px;
-    height:90px;
-
-    border-radius:50%;
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            #ffd8a6,
-            #ff743d,
-            #4d0b0b
-        );
-
-    box-shadow:
-        0 0 30px rgba(255,90,54,.5),
-        0 0 80px rgba(255,90,54,.2);
-
-    animation:
-        pulse 2s infinite;
-}
-
-.status{
-
-    margin-top:30px;
-
-    color:#999;
-}
-
-/* ------------------------------------------------ */
-/* DASHBOARD                                        */
-/* ------------------------------------------------ */
-
-#dashboard{
-
-    display:none;
-
-    padding:40px;
-
-    max-width:1200px;
-
-    margin:auto;
-}
-
-.header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:30px;
-}
-
-.header-title{
-
-    font-size:40px;
-
-    letter-spacing:8px;
-}
-
-.card{
-
-    background:rgba(15,15,15,.9);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:25px;
-
-    margin-bottom:25px;
-}
-
-.card h2{
-
-    margin-bottom:20px;
-}
-
-input{
-
-    width:100%;
-
-    margin-top:10px;
-
-    margin-bottom:15px;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#1a1a1a;
-
-    color:white;
-}
-
-button{
-
-    cursor:pointer;
-
-    border:none;
-
-    border-radius:10px;
-
-    padding:12px 18px;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7d0808,
-            #ff5a36
-        );
-}
-
-button:hover{
-
-    opacity:.9;
-}
-
-.preview-container{
-
-    display:flex;
-
-    gap:20px;
-}
-
-.preview{
-
-    width:200px;
-    height:200px;
-
-    object-fit:cover;
-
-    border-radius:15px;
-
-    border:1px solid #333;
-
-    background:#111;
-}
-
-.flare-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:10px;
-}
-
-.help{
-
-    width:25px;
-
-    height:25px;
-
-    border-radius:50%;
-}
-
-.launch{
-
-    width:100%;
-
-    padding:18px;
-
-    font-size:18px;
-}
-
-@keyframes spin{
-
-    from{
-
-        transform:rotate(0deg);
-    }
-
-    to{
-
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes pulse{
-
-    0%{
-
-        transform:
-            translate(-50%,-50%)
-            scale(.95);
-    }
-
-    100%{
-
-        transform:
-            translate(-50%,-50%)
-            scale(1.05);
-    }
-}
-
-@keyframes glow{
-
-    from{
-
-        opacity:.8;
-    }
-
-    to{
-
-        opacity:1;
-    }
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inferno Launcher</title>
+    
+    <!-- ========================================== -->
+    <!-- STYLES                                     -->
+    <!-- ========================================== -->
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --panel-bg: #141414;
+            --panel-bg-hover: #1a1a1a;
+            --border-color: #2a2a2a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --primary-color: #d4183a;
+            --secondary-color: #ff4500;
+            --glow-intensity: 15px;
+            --particle-density: 50;
+            --border-radius: 8px;
+            --blur-amount: 12px;
+            --animation-speed: 0.3s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-select: none; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            transition: background-color var(--animation-speed) ease;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+        #particle-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+
+        /* LOADER */
+        #loader {
+            position: fixed; inset: 0; background-color: var(--bg-color);
+            z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-core { position: relative; width: 120px; height: 120px; margin-bottom: 40px; }
+        .core-ring {
+            position: absolute; border: 2px solid transparent;
+            border-top: 2px solid var(--primary-color); border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+        .ring-1 { width: 120px; height: 120px; top: 0; left: 0; }
+        .ring-2 { width: 90px; height: 90px; top: 15px; left: 15px; animation-duration: 1.5s; animation-direction: reverse; border-top-color: var(--secondary-color); }
+        .ring-3 { width: 60px; height: 60px; top: 30px; left: 30px; animation-duration: 1s; border-top-color: #ff8c00; }
+        .core-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 30px; height: 30px;
+            background: radial-gradient(circle, var(--secondary-color), var(--primary-color));
+            border-radius: 50%; box-shadow: 0 0 20px var(--primary-color);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; } }
+        .loader-title {
+            font-size: 2.5rem; font-weight: bold; letter-spacing: 8px; text-transform: uppercase;
+            background: linear-gradient(45deg, var(--text-primary), var(--primary-color));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+        }
+        .loader-progress-container { width: 300px; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden; }
+        .loader-progress-bar {
+            height: 100%; width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease; box-shadow: 0 0 10px var(--primary-color);
+        }
+        .loader-text { margin-top: 15px; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* APP LAYOUT */
+        #app { display: flex; height: 100vh; position: relative; z-index: 1; }
+        #sidebar {
+            width: 240px; background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(var(--blur-amount)); border-right: 1px solid var(--border-color);
+            display: flex; flex-direction: column; transition: width var(--animation-speed) ease; overflow: hidden;
+        }
+        #sidebar.collapsed { width: 60px; }
+        .sidebar-header { padding: 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); height: 80px; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; opacity: 1; transition: opacity var(--animation-speed) ease; }
+        .logo span { color: var(--primary-color); }
+        #sidebar.collapsed .logo { opacity: 0; width: 0; }
+        .collapse-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; transition: color var(--animation-speed); }
+        .collapse-btn:hover { color: var(--primary-color); }
+        .nav-list { list-style: none; padding: 15px 0; flex-grow: 1; }
+        .nav-item { padding: 15px 20px; display: flex; align-items: center; cursor: pointer; color: var(--text-secondary); transition: all var(--animation-speed) ease; position: relative; white-space: nowrap; }
+        .nav-item:hover { background: var(--panel-bg-hover); color: var(--text-primary); }
+        .nav-item.active { color: var(--text-primary); background: linear-gradient(90deg, rgba(212, 24, 58, 0.1), transparent); }
+        .nav-item.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--primary-color); box-shadow: 0 0 10px var(--primary-color); }
+        .nav-icon { margin-right: 15px; font-size: 1.2rem; width: 20px; text-align: center; }
+        #sidebar.collapsed .nav-text { opacity: 0; width: 0; }
+        .launch-container { padding: 20px; border-top: 1px solid var(--border-color); }
+        .btn-launch {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; border-radius: var(--border-radius); transition: all var(--animation-speed) ease;
+            box-shadow: 0 0 var(--glow-intensity) rgba(212, 24, 58, 0.4); position: relative; overflow: hidden;
+        }
+        .btn-launch:hover { transform: translateY(-2px); box-shadow: 0 0 calc(var(--glow-intensity) * 1.5) rgba(212, 24, 58, 0.6); }
+
+        #main-content { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .content-area { flex-grow: 1; overflow-y: auto; padding: 30px; background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(var(--blur-amount)); }
+        .section { display: none; animation: fadeIn var(--animation-speed) ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 1.8rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 15px; }
+        .section-title span { color: var(--primary-color); }
+
+        .panel { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; color: var(--text-secondary); font-size: 0.9rem; }
+        input[type="text"], input[type="url"], input[type="number"], textarea, select {
+            width: 100%; padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius); color: var(--text-primary); transition: border-color var(--animation-speed), box-shadow var(--animation-speed);
+        }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 8px rgba(212, 24, 58, 0.3); }
+        .btn { padding: 10px 20px; background: var(--panel-bg-hover); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--border-radius); cursor: pointer; transition: all var(--animation-speed) ease; font-weight: 500; }
+        .btn:hover { background: var(--primary-color); border-color: var(--primary-color); }
+        .btn-danger { border-color: #444; color: #aaa; }
+        .btn-danger:hover { background: #d4183a; border-color: #d4183a; color: white; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .stat-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; display: flex; flex-direction: column; gap: 5px; transition: transform var(--animation-speed), border-color var(--animation-speed); }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--primary-color); }
+        .stat-label { color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: var(--primary-color); }
+
+        .list-item { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 15px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; transition: border-color var(--animation-speed); }
+        .list-item:hover { border-color: var(--primary-color); }
+        .item-info { flex-grow: 1; }
+        .item-title { font-weight: bold; color: var(--text-primary); }
+        .item-desc { font-size: 0.85rem; color: var(--text-secondary); }
+        .item-tag { display: inline-block; padding: 2px 8px; background: rgba(212, 24, 58, 0.2); color: var(--primary-color); border-radius: 4px; font-size: 0.75rem; margin-left: 10px; }
+        .item-controls { display: flex; gap: 10px; align-items: center; }
+        .toggle { position: relative; width: 40px; height: 20px; background: var(--border-color); border-radius: 20px; cursor: pointer; transition: background var(--animation-speed); }
+        .toggle.on { background: var(--primary-color); }
+        .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: white; border-radius: 50%; transition: transform var(--animation-speed); }
+        .toggle.on::after { transform: translateX(20px); }
+
+        .log-panel { background: #000; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 15px; height: 400px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 0.85rem; }
+        .log-entry { margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid #111; display: flex; gap: 15px; }
+        .log-time { color: #555; }
+        .log-level { font-weight: bold; width: 60px; }
+        .log-level.INFO { color: #4a9eff; } .log-level.WARN { color: #ffaa00; } .log-level.ERROR { color: #ff4444; } .log-level.SUCCESS { color: #00ff88; }
+        .log-message { color: #ccc; }
+
+        .control-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+        input[type="color"] { width: 50px; height: 30px; border: none; background: none; cursor: pointer; }
+        input[type="range"] { width: 100%; }
+
+        #status-bar { background: rgba(0, 0, 0, 0.9); border-top: 1px solid var(--border-color); padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-secondary); }
+        .status-item { display: flex; align-items: center; gap: 8px; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 5px #00ff88; }
+
+        #notification-container { position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px; }
+        .notification { background: var(--panel-bg); border-left: 4px solid var(--primary-color); border-radius: var(--border-radius); padding: 15px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); min-width: 250px; animation: slideIn 0.3s ease, fadeOut 0.5s ease 3s forwards; }
+        @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateX(120%); } }
+
+        .tooltip { position: relative; display: inline-block; cursor: help; }
+        .tooltip .tooltiptext { visibility: hidden; width: 180px; background: var(--panel-bg); color: var(--text-primary); text-align: center; border-radius: 6px; padding: 8px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -90px; border: 1px solid var(--border-color); opacity: 0; transition: opacity 0.3s; font-size: 0.8rem; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+    </style>
 </head>
-
 <body>
+    <canvas id="particle-canvas"></canvas>
 
-<div id="loader">
-
-    <div class="loader-container">
-
-        <div class="title">
-
-            INFERNO
-
+    <div id="loader">
+        <div class="loader-core">
+            <div class="core-ring ring-1"></div>
+            <div class="core-ring ring-2"></div>
+            <div class="core-ring ring-3"></div>
+            <div class="core-center"></div>
         </div>
-
-        <div class="spinner">
-
-            <div class="ring"></div>
-
-            <div class="ring ring2"></div>
-
-            <div class="core"></div>
-
-        </div>
-
-        <div
-            class="status"
-            id="statusText">
-
-            Loading assets...
-
-        </div>
-
+        <div class="loader-title">INFERNO</div>
+        <div class="loader-progress-container"><div class="loader-progress-bar" id="loader-bar"></div></div>
+        <div class="loader-text" id="loader-text">Initializing...</div>
     </div>
 
-</div>
-
-<div id="dashboard">
-
-    <div class="header">
-
-        <div class="header-title">
-
-            INFERNO
-
+    <div id="app">
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">Inferno<span>.</span></div>
+                <button class="collapse-btn" id="btn-collapse" title="Toggle Sidebar">&#9776;</button>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item active" data-section="dashboard"><span class="nav-icon">&#9632;</span><span class="nav-text">Dashboard</span></li>
+                <li class="nav-item" data-section="community"><span class="nav-icon">&#9670;</span><span class="nav-text">Communities</span></li>
+                <li class="nav-item" data-section="order"><span class="nav-icon">&#9650;</span><span class="nav-text">Order Queue</span></li>
+                <li class="nav-item" data-section="flares"><span class="nav-icon">&#9728;</span><span class="nav-text">Flares</span></li>
+                <li class="nav-item" data-section="themes"><span class="nav-icon">&#9776;</span><span class="nav-text">Themes</span></li>
+                <li class="nav-item" data-section="logging"><span class="nav-icon">&#9776;</span><span class="nav-text">Logging</span></li>
+                <li class="nav-item" data-section="settings"><span class="nav-icon">&#9881;</span><span class="nav-text">Settings</span></li>
+            </ul>
+            <div class="launch-container">
+                <button class="btn-launch" id="btn-launch-main">START QUEUE</button>
+            </div>
         </div>
 
+        <div id="main-content">
+            <div class="content-area">
+                <!-- DASHBOARD -->
+                <div class="section active" id="dashboard">
+                    <div class="section-title">Dashboard <span>Overview</span></div>
+                    <div class="stats-grid">
+                        <div class="stat-card"><span class="stat-label">Total Communities</span><span class="stat-value" id="stat-communities">0</span></div>
+                        <div class="stat-card"><span class="stat-label">Queue Size</span><span class="stat-value" id="stat-queue">0</span></div>
+                        <div class="stat-card"><span class="stat-label">Total Flares</span><span class="stat-value" id="stat-flares">0</span></div>
+                        <div class="stat-card"><span class="stat-label">Storage Usage</span><span class="stat-value" id="stat-storage">0 KB</span></div>
+                        <div class="stat-card"><span class="stat-label">App Status</span><span class="stat-value" style="font-size: 1.2rem; color: #00ff88;">OPERATIONAL</span></div>
+                        <div class="stat-card"><span class="stat-label">Launch Status</span><span class="stat-value" style="font-size: 1.2rem;" id="stat-launch">READY</span></div>
+                    </div>
+                </div>
+
+                <!-- COMMUNITY -->
+                <div class="section" id="community">
+                    <div class="section-title">Communities <span>Subreddits</span></div>
+                    <div class="panel">
+                        <div class="input-group"><label>Community Name (e.g. radman5)</label><input type="text" id="url-title" placeholder="Subreddit name"></div>
+                        <div class="input-group"><label>Description</label><input type="text" id="url-desc" placeholder="Short description"></div>
+                        <button class="btn" id="btn-add-url">Add Community</button>
+                    </div>
+                    <div class="panel"><input type="text" id="url-search" placeholder="Search..." style="margin-bottom: 15px;"><div id="url-list"></div></div>
+                </div>
+
+                <!-- ORDER QUEUE -->
+                <div class="section" id="order">
+                    <div class="section-title">Order <span>Queue Builder</span></div>
+                    <div class="panel">
+                        <div class="input-group"><label>Post Title</label><input type="text" id="order-title" placeholder="My New Title"></div>
+                        <div class="input-group"><label>Image URL 1</label><input type="url" id="order-img1" placeholder="https://i.imgur.com/..."></div>
+                        <div class="input-group"><label>Image URL 2</label><input type="url" id="order-img2" placeholder="https://i.imgur.com/..."></div>
+                        <div class="input-group">
+                            <label>Select Flair</label>
+                            <select id="order-flair"><option value="">Select Flair Option</option></select>
+                        </div>
+                        <div class="input-group">
+                            <label>Select Community</label>
+                            <select id="order-community"><option value="">Select Community</option></select>
+                        </div>
+                        <button class="btn" id="btn-add-order">Add to Queue</button>
+                    </div>
+                    <div class="panel">
+                        <h4 style="margin-bottom: 15px; color: var(--text-secondary);">Execution Order (Drag to reorder)</h4>
+                        <div id="order-list"></div>
+                    </div>
+                </div>
+
+                <!-- FLARES -->
+                <div class="section" id="flares">
+                    <div class="section-title">
+                        Flares <span>Library (Max 9)</span>
+                        <div class="tooltip" style="margin-left: auto;"><button class="btn" style="padding: 2px 8px; font-size: 0.8rem;">?</button>
+                            <span class="tooltiptext">1 = first option<br>2 = second option<br>...<br>9 = ninth option</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="input-group"><label>Flair Name</label><input type="text" id="flare-name" placeholder="e.g. Need Money"></div>
+                        <div class="input-group"><label>Flair Number (1-9)</label><select id="flare-number">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                        </select></div>
+                        <button class="btn" id="btn-add-flare">Add Flair</button>
+                    </div>
+                    <div class="panel"><div id="flare-list"></div></div>
+                </div>
+
+                <!-- THEMES -->
+                <div class="section" id="themes">
+                    <div class="section-title">Theme <span>Customizer</span></div>
+                    <div class="panel">
+                        <div class="control-row"><label>Primary Color</label><input type="color" id="theme-primary" value="#d4183a"></div>
+                        <div class="control-row"><label>Secondary Color</label><input type="color" id="theme-secondary" value="#ff4500"></div>
+                        <div class="input-group"><label>Glow Intensity: <span id="val-glow">15</span>px</label><input type="range" id="theme-glow" min="0" max="40" value="15"></div>
+                        <div class="input-group"><label>Particle Density: <span id="val-particles">50</span></label><input type="range" id="theme-particles" min="0" max="200" value="50"></div>
+                        <div class="input-group"><label>Border Radius: <span id="val-radius">8</span>px</label><input type="range" id="theme-radius" min="0" max="30" value="8"></div>
+                        <div class="input-group"><label>Blur Amount: <span id="val-blur">12</span>px</label><input type="range" id="theme-blur" min="0" max="40" value="12"></div>
+                    </div>
+                </div>
+
+                <!-- LOGGING -->
+                <div class="section" id="logging">
+                    <div class="section-title">System <span>Logs</span></div>
+                    <div class="panel" style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center;">
+                        <select id="log-filter" style="width: auto;">
+                            <option value="ALL">All Levels</option><option value="INFO">Info</option>
+                            <option value="WARN">Warning</option><option value="ERROR">Error</option><option value="SUCCESS">Success</option>
+                        </select>
+                        <input type="text" id="log-search" placeholder="Search logs..." style="margin-bottom: 0;">
+                    </div>
+                    <div class="log-panel" id="log-panel"></div>
+                </div>
+
+                <!-- SETTINGS -->
+                <div class="section" id="settings">
+                    <div class="section-title">App <span>Settings</span></div>
+                    <div class="panel">
+                        <div class="input-group"><label>Startup Behavior</label>
+                            <select id="settings-startup">
+                                <option value="dashboard">Open Dashboard</option>
+                                <option value="community">Open Communities</option>
+                                <option value="order">Open Order Queue</option>
+                            </select>
+                        </div>
+                        <div class="input-group"><label>Animation Speed: <span id="val-speed">0.3</span>s</label><input type="range" id="settings-speed" min="0.1" max="2" step="0.1" value="0.3"></div>
+                    </div>
+                    <div class="panel">
+                        <button class="btn" id="btn-export" style="margin-right: 10px;">Export Config</button>
+                        <button class="btn" id="btn-import" style="margin-right: 10px;">Import Config</button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                        <button class="btn btn-danger" id="btn-reset">Reset Configuration</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="status-bar">
+                <div class="status-item"><div class="status-dot"></div><span id="status-storage">Local Storage: Active</span></div>
+                <div class="status-item"><span>App State: <span style="color: #00ff88;">Running</span></span></div>
+                <div class="status-item"><span>WebView2: <span style="color: #aaa;" id="status-webview">Standby</span></span></div>
+                <div class="status-item"><span>Version: 2.0.0</span></div>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-
-        <h2>
-
-            Community URLs
-
-        </h2>
-
-        <div id="urlContainer">
-
-        </div>
-
-        <button
-            onclick="addUrl()">
-
-            Add URL
-
-        </button>
-
-    </div>
-
-    <div class="card">
-
-        <h2>
-
-            Content
-
-        </h2>
-
-        <label>
-
-            Adjust Content Title
-
-        </label>
-
-        <input
-            id="contentTitle">
-
-    </div>
-
-    <div class="card">
-
-        <h2>
-
-            Images
-
-        </h2>
-
-        <input
-            id="image1"
-            type="file">
-
-        <input
-            id="image2"
-            type="file">
-
-        <div class="preview-container">
-
-            <img
-                class="preview"
-                id="preview1">
-
-            <img
-                class="preview"
-                id="preview2">
-
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <h2>
-
-            Flares
-
-            <button
-                class="help"
-                onclick="flareHelp()">
-
-                ?
-
-            </button>
-
-        </h2>
-
-        <div class="flare-row">
-
-            Flare 1
-
-            <input id="flare1">
-
-        </div>
-
-        <div class="flare-row">
-
-            Flare 2
-
-            <input id="flare2">
-
-        </div>
-
-        <div class="flare-row">
-
-            Flare 3
-
-            <input id="flare3">
-
-        </div>
-
-        <div class="flare-row">
-
-            Flare 4
-
-            <input id="flare4">
-
-        </div>
-
-    </div>
-
-    <button
-        class="launch"
-        onclick="launchApp()">
-
-        Launch Application
-
-    </button>
-
-</div>
+    <div id="notification-container"></div>
 
     <script>
+        let InfernoState = {
+            communities: [], flares: [], order: [],
+            theme: { primary: '#d4183a', secondary: '#ff4500', glow: 15, particles: 50, radius: 8, blur: 12 },
+            settings: { startup: 'dashboard', speed: 0.3 }, logs: []
+        };
 
-/* ===================================================== */
-/* STATUS MESSAGES                                       */
-/* ===================================================== */
+        const $ = (id) => document.getElementById(id);
 
-const messages = [
-    "Loading assets...",
-    "Loading textures...",
-    "Loading modules...",
-    "Preparing engine...",
-    "Loading configuration...",
-    "Initializing interface..."
-];
+        function saveState() {
+            try {
+                localStorage.setItem('infernoState', JSON.stringify(InfernoState));
+                log('INFO', 'State saved to localStorage.');
+                updateStorageStat();
+            } catch (e) { log('ERROR', 'Failed to save state: ' + e.message); }
+        }
 
-let messageIndex = 0;
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('infernoState');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    InfernoState = {
+                        communities: parsed.communities || [],
+                        flares: parsed.flares || [],
+                        order: parsed.order || [],
+                        theme: { ...InfernoState.theme, ...parsed.theme },
+                        settings: { ...InfernoState.settings, ...parsed.settings },
+                        logs: []
+                    };
+                }
+            } catch (e) { console.error('State Load Error:', e); }
+        }
 
-setInterval(() => {
+        function notify(title, message = '') {
+            const div = document.createElement('div');
+            div.className = 'notification';
+            div.innerHTML = `<strong>${title}</strong>${message ? '<br><span style="font-size:0.85rem;color:#aaa;">' + message + '</span>' : ''}`;
+            $('notification-container').appendChild(div);
+            setTimeout(() => div.remove(), 3500);
+        }
 
-    messageIndex++;
+        function log(level, message) {
+            const time = new Date().toLocaleTimeString();
+            InfernoState.logs.push({ time, level, message });
+            if (InfernoState.logs.length > 200) InfernoState.logs.shift();
+            renderLogs();
+        }
 
-    document.getElementById("statusText").innerText =
-        messages[messageIndex % messages.length];
+        // Particle System
+        let particles = [];
+        function initParticles() {
+            const canvas = $('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            function createParticle() {
+                return { x: Math.random() * canvas.width, y: canvas.height + 10, size: Math.random() * 3 + 1, speed: Math.random() * 1.5 + 0.5, color: Math.random() > 0.5 ? InfernoState.theme.primary : InfernoState.theme.secondary, alpha: Math.random() * 0.6 + 0.2 };
+            }
+            function updateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const density = InfernoState.theme.particles;
+                while (particles.length < density) particles.push(createParticle());
+                while (particles.length > density) particles.pop();
+                particles.forEach(p => {
+                    p.y -= p.speed; p.alpha -= 0.003;
+                    if (p.y < 0 || p.alpha <= 0) Object.assign(p, createParticle());
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha; ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
+                });
+                ctx.globalAlpha = 1; requestAnimationFrame(updateParticles);
+            }
+            updateParticles();
+        }
 
-}, 2000);
+        function runLoader() {
+            const messages = ["Loading assets...", "Loading files...", "Initializing environment...", "Connecting components...", "Preparing dashboard..."];
+            let progress = 0; const bar = $('loader-bar'); const text = $('loader-text');
+            const interval = setInterval(() => {
+                progress += 10; bar.style.width = progress + '%'; text.textContent = messages[Math.floor(progress / 20)] || 'Ready';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        $('loader').classList.add('hidden');
+                        navigateTo(InfernoState.settings.startup || 'dashboard');
+                    }, 500);
+                }
+            }, 150);
+        }
 
-/* ===================================================== */
-/* LOADER TRANSITION                                     */
-/* ===================================================== */
+        function navigateTo(sectionId) {
+            if (!$(sectionId)) sectionId = 'dashboard';
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            $(sectionId).classList.add('active');
+            const navItem = document.querySelector(`.nav-item[data-section="${sectionId}"]`);
+            if (navItem) navItem.classList.add('active');
+        }
 
-function finishLoading() {
+        function renderDashboard() {
+            $('stat-communities').textContent = InfernoState.communities.length;
+            $('stat-queue').textContent = InfernoState.order.length;
+            $('stat-flares').textContent = InfernoState.flares.length;
+        }
 
-    document.getElementById("loader").style.display = "none";
+        function updateStorageStat() {
+            const size = new Blob([JSON.stringify(InfernoState)]).size;
+            $('stat-storage').textContent = `${(size / 1024).toFixed(2)} KB`;
+        }
 
-    document.getElementById("dashboard").style.display = "block";
+        // Communities
+        function renderCommunities() {
+            const list = $('url-list'); list.innerHTML = '';
+            const search = $('url-search').value.toLowerCase();
+            const filtered = InfernoState.communities.filter(u => u.name.toLowerCase().includes(search));
+            if (filtered.length === 0) { list.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:10px;">No communities found.</div>'; return; }
+            filtered.forEach(u => {
+                const actualIndex = InfernoState.communities.indexOf(u);
+                const div = document.createElement('div'); div.className = 'list-item';
+                div.innerHTML = `<div class="item-info"><div class="item-title">r/${u.name}</div><div class="item-desc">${u.desc}</div></div><div class="item-controls"><button class="btn btn-danger" onclick="deleteCommunity(${actualIndex})">Delete</button></div>`;
+                list.appendChild(div);
+            });
+        }
 
-}
+        window.deleteCommunity = (index) => {
+            InfernoState.communities.splice(index, 1);
+            saveState(); renderCommunities(); renderDashboard(); populateDropdowns();
+        };
 
-/*
-    Temporary delay.
+        // Flares
+        function renderFlares() {
+            const list = $('flare-list'); list.innerHTML = '';
+            if (InfernoState.flares.length === 0) { list.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:10px;">No flares configured.</div>'; return; }
+            InfernoState.flares.forEach((f, index) => {
+                const div = document.createElement('div'); div.className = 'list-item';
+                div.innerHTML = `<div class="item-info"><div class="item-title">${f.name} <span class="item-tag">Opt: ${f.number}</span></div></div><div class="item-controls"><button class="btn btn-danger" onclick="deleteFlare(${index})">Delete</button></div>`;
+                list.appendChild(div);
+            });
+        }
 
-    Your C# code will eventually call:
+        window.deleteFlare = (index) => {
+            InfernoState.flares.splice(index, 1);
+            saveState(); renderFlares(); renderDashboard(); populateDropdowns();
+        };
 
-    finishLoading();
+        // Dropdowns for Order Queue
+        function populateDropdowns() {
+            const flairSelect = $('order-flair'); flairSelect.innerHTML = '<option value="">Select Flair Option</option>';
+            InfernoState.flares.forEach(f => {
+                const opt = document.createElement('option'); opt.value = f.number; opt.textContent = `${f.number} - ${f.name}`;
+                flairSelect.appendChild(opt);
+            });
+            const commSelect = $('order-community'); commSelect.innerHTML = '<option value="">Select Community</option>';
+            InfernoState.communities.forEach(c => {
+                const opt = document.createElement('option'); opt.value = c.name; opt.textContent = `r/${c.name}`;
+                commSelect.appendChild(opt);
+            });
+        }
 
-*/
+        // Order Queue
+        function renderOrder() {
+            const list = $('order-list'); list.innerHTML = '';
+            if (InfernoState.order.length === 0) { list.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:10px;">Queue is empty.</div>'; return; }
+            InfernoState.order.forEach((item, index) => {
+                const div = document.createElement('div'); div.className = 'list-item'; div.draggable = true; div.dataset.index = index;
+                div.innerHTML = `<div class="item-info"><div class="item-title">${item.title} <span class="item-tag">r/${item.community}</span></div><div class="item-desc">Flair: ${item.flair || 'None'} | Img1: ${item.img1 ? 'Yes' : 'No'} | Img2: ${item.img2 ? 'Yes' : 'No'}</div></div><div class="item-controls"><button class="btn btn-danger" onclick="deleteOrder(${index})">Remove</button></div>`;
+                div.addEventListener('dragstart', handleDragStart); div.addEventListener('dragover', handleDragOver); div.addEventListener('drop', handleDrop);
+                list.appendChild(div);
+            });
+        }
 
-setTimeout(() => {
+        let draggedItem = null;
+        function handleDragStart(e) { draggedItem = this; this.style.opacity = 0.5; }
+        function handleDragOver(e) { e.preventDefault(); }
+        function handleDrop(e) {
+            e.preventDefault(); if (this === draggedItem) return;
+            const fromIndex = parseInt(draggedItem.dataset.index); const toIndex = parseInt(this.dataset.index);
+            const movedItem = InfernoState.order.splice(fromIndex, 1)[0]; InfernoState.order.splice(toIndex, 0, movedItem);
+            draggedItem.style.opacity = 1; saveState(); renderOrder();
+        }
 
-    finishLoading();
+        window.deleteOrder = (index) => {
+            InfernoState.order.splice(index, 1);
+            saveState(); renderOrder(); renderDashboard();
+        };
 
-}, 6000);
+        function renderLogs() {
+            const panel = $('log-panel'); const filter = $('log-filter').value; const search = $('log-search').value.toLowerCase();
+            panel.innerHTML = '';
+            InfernoState.logs.filter(l => (filter === 'ALL' || l.level === filter) && l.message.toLowerCase().includes(search)).forEach(log => {
+                const div = document.createElement('div'); div.className = 'log-entry';
+                div.innerHTML = `<span class="log-time">[${log.time}]</span><span class="log-level ${log.level}">${log.level}</span><span class="log-message">${log.message}</span>`;
+                panel.appendChild(div);
+            });
+            panel.scrollTop = panel.scrollHeight;
+        }
 
-/* ===================================================== */
-/* LOCAL STORAGE                                         */
-/* ===================================================== */
+        function applyTheme() {
+            const t = InfernoState.theme, root = document.documentElement;
+            root.style.setProperty('--primary-color', t.primary); root.style.setProperty('--secondary-color', t.secondary);
+            root.style.setProperty('--glow-intensity', t.glow + 'px'); root.style.setProperty('--particle-density', t.particles);
+            root.style.setProperty('--border-radius', t.radius + 'px'); root.style.setProperty('--blur-amount', t.blur + 'px');
+            root.style.setProperty('--animation-speed', InfernoState.settings.speed + 's');
+        }
 
-function saveSettings() {
+        function exportConfig() {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(InfernoState, null, 2)], {type: "application/json"}));
+            a.download = "inferno-config.json"; a.click();
+        }
 
-    const settings = {
+        function importConfig(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try { InfernoState = JSON.parse(e.target.result); saveState(); applyTheme(); renderAll(); } 
+                catch (err) { notify('Import Failed', 'Invalid config.'); }
+            }; reader.readAsText(file);
+        }
 
-        contentTitle:
-            document.getElementById("contentTitle").value,
+        function renderAll() { renderDashboard(); renderCommunities(); renderFlares(); renderOrder(); populateDropdowns(); }
 
-        flare1:
-            document.getElementById("flare1").value,
+        function sendToCSharp(message) {
+            if (window.chrome && window.chrome.webview) {
+                window.chrome.webview.postMessage(message);
+                $('status-webview').textContent = 'Connected'; $('status-webview').style.color = '#00ff88';
+                return true;
+            }
+            return false;
+        }
+        window.receiveFromCSharp = (message) => log('INFO', 'C# says: ' + message);
 
-        flare2:
-            document.getElementById("flare2").value,
+        document.addEventListener('DOMContentLoaded', () => {
+            loadState(); applyTheme(); initParticles(); renderAll(); runLoader();
 
-        flare3:
-            document.getElementById("flare3").value,
+            $('btn-collapse').addEventListener('click', () => $('sidebar').classList.toggle('collapsed'));
+            document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => navigateTo(item.dataset.section)));
 
-        flare4:
-            document.getElementById("flare4").value,
+            $('btn-launch-main').addEventListener('click', () => {
+                if (InfernoState.order.length === 0) { notify('Queue Empty', 'Add items to the queue first.'); return; }
+                log('SUCCESS', 'Queue launch initiated.');
+                $('stat-launch').textContent = 'SENDING...';
+                const isWebView2 = sendToCSharp({ action: 'start_queue', queue: InfernoState.order });
+                if (isWebView2) { notify('Queue Sent', 'C# is now processing the queue.'); $('stat-launch').textContent = 'PROCESSING'; } 
+                else { notify('Simulated', 'C# not detected. Simulating launch.'); $('stat-launch').textContent = 'SIMULATED'; }
+            });
 
-        urls: collectUrls(),
+            $('btn-add-url').addEventListener('click', () => {
+                const name = $('url-title').value.trim();
+                if (!name) return notify('Missing Data', 'Community name is required.');
+                InfernoState.communities.push({ name, desc: $('url-desc').value || 'No description' });
+                saveState(); renderCommunities(); renderDashboard(); populateDropdowns();
+                $('url-title').value = ''; $('url-desc').value = ''; notify('Community Added', name);
+            });
+            $('url-search').addEventListener('input', renderCommunities);
 
-        image1:
-            localStorage.getItem("image1"),
+            $('btn-add-flare').addEventListener('click', () => {
+                const name = $('flare-name').value.trim();
+                if (!name) return notify('Missing Data', 'Flair name is required.');
+                InfernoState.flares.push({ name, number: parseInt($('flare-number').value) });
+                saveState(); renderFlares(); renderDashboard(); populateDropdowns();
+                $('flare-name').value = ''; notify('Flare Added', name);
+            });
 
-        image2:
-            localStorage.getItem("image2")
-    };
+            $('btn-add-order').addEventListener('click', () => {
+                const title = $('order-title').value.trim();
+                const community = $('order-community').value;
+                if (!title || !community) return notify('Missing Data', 'Title and Community are required.');
+                InfernoState.order.push({
+                    title, img1: $('order-img1').value, img2: $('order-img2').value,
+                    flair: $('order-flair').value, community
+                });
+                saveState(); renderOrder(); renderDashboard();
+                $('order-title').value = ''; $('order-img1').value = ''; $('order-img2').value = '';
+                notify('Added to Queue', title);
+            });
 
-    localStorage.setItem(
-        "inferno_settings",
-        JSON.stringify(settings)
-    );
-}
+            const themeMap = { 'theme-primary': 'primary', 'theme-secondary': 'secondary', 'theme-glow': 'glow', 'theme-particles': 'particles', 'theme-radius': 'radius', 'theme-blur': 'blur' };
+            Object.keys(themeMap).forEach(id => {
+                $(id).addEventListener('input', (e) => {
+                    let val = e.target.value;
+                    InfernoState.theme[themeMap[id]] = id.includes('glow') || id.includes('particles') || id.includes('radius') || id.includes('blur') ? parseInt(val) : val;
+                    if (id === 'theme-glow') $('val-glow').textContent = val;
+                    if (id === 'theme-particles') $('val-particles').textContent = val;
+                    if (id === 'theme-radius') $('val-radius').textContent = val;
+                    if (id === 'theme-blur') $('val-blur').textContent = val;
+                    applyTheme(); saveState();
+                });
+            });
 
-function loadSettings() {
+            $('log-filter').addEventListener('change', renderLogs);
+            $('log-search').addEventListener('input', renderLogs);
+            $('settings-startup').addEventListener('change', (e) => { InfernoState.settings.startup = e.target.value; saveState(); });
+            $('settings-speed').addEventListener('input', (e) => { InfernoState.settings.speed = parseFloat(e.target.value); $('val-speed').textContent = e.target.value; applyTheme(); saveState(); });
+            $('settings-startup').value = InfernoState.settings.startup;
+            $('settings-speed').value = InfernoState.settings.speed; $('val-speed').textContent = InfernoState.settings.speed;
 
-    const data = localStorage.getItem(
-        "inferno_settings"
-    );
+            $('theme-primary').value = InfernoState.theme.primary; $('theme-secondary').value = InfernoState.theme.secondary;
+            $('theme-glow').value = InfernoState.theme.glow; $('val-glow').textContent = InfernoState.theme.glow;
+            $('theme-particles').value = InfernoState.theme.particles; $('val-particles').textContent = InfernoState.theme.particles;
+            $('theme-radius').value = InfernoState.theme.radius; $('val-radius').textContent = InfernoState.theme.radius;
+            $('theme-blur').value = InfernoState.theme.blur; $('val-blur').textContent = InfernoState.theme.blur;
 
-    if (!data) {
-        return;
-    }
+            $('btn-export').addEventListener('click', exportConfig);
+            $('btn-import').addEventListener('click', () => $('import-file').click());
+            $('import-file').addEventListener('change', (e) => { if (e.target.files[0]) importConfig(e.target.files[0]); });
+            $('btn-reset').addEventListener('click', () => { if (confirm('Reset all configuration?')) { localStorage.removeItem('infernoState'); location.reload(); }});
 
-    const settings = JSON.parse(data);
-
-    document.getElementById("contentTitle").value =
-        settings.contentTitle || "";
-
-    document.getElementById("flare1").value =
-        settings.flare1 || "";
-
-    document.getElementById("flare2").value =
-        settings.flare2 || "";
-
-    document.getElementById("flare3").value =
-        settings.flare3 || "";
-
-    document.getElementById("flare4").value =
-        settings.flare4 || "";
-
-    if (settings.image1) {
-
-        document.getElementById(
-            "preview1"
-        ).src = settings.image1;
-    }
-
-    if (settings.image2) {
-
-        document.getElementById(
-            "preview2"
-        ).src = settings.image2;
-    }
-
-    if (settings.urls) {
-
-        settings.urls.forEach(url => {
-
-            addUrl(url);
-
+            window.addEventListener('resize', () => { const c = $('particle-canvas'); c.width = window.innerWidth; c.height = window.innerHeight; });
         });
-    }
-}
-
-/* ===================================================== */
-/* COMMUNITY URLS                                        */
-/* ===================================================== */
-
-function collectUrls() {
-
-    const urls = [];
-
-    document.querySelectorAll(".community-url")
-        .forEach(input => {
-
-            urls.push(input.value);
-
-        });
-
-    return urls;
-}
-
-function addUrl(existingValue = "") {
-
-    const container =
-        document.getElementById(
-            "urlContainer"
-        );
-
-    const row =
-        document.createElement("div");
-
-    row.style.marginBottom = "10px";
-
-    const input =
-        document.createElement("input");
-
-    input.className = "community-url";
-
-    input.placeholder =
-        "https://example.com";
-
-    input.value = existingValue;
-
-    input.oninput = saveSettings;
-
-    const removeButton =
-        document.createElement("button");
-
-    removeButton.innerText = "Delete";
-
-    removeButton.style.marginTop = "5px";
-
-    removeButton.onclick = () => {
-
-        row.remove();
-
-        saveSettings();
-
-    };
-
-    row.appendChild(input);
-
-    row.appendChild(removeButton);
-
-    container.appendChild(row);
-
-    saveSettings();
-}
-
-/* ===================================================== */
-/* IMAGE HANDLING                                        */
-/* ===================================================== */
-
-function saveImage(inputId, previewId) {
-
-    const input =
-        document.getElementById(inputId);
-
-    const file =
-        input.files[0];
-
-    if (!file) {
-        return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function (event) {
-
-        const imageData =
-            event.target.result;
-
-        document.getElementById(
-            previewId
-        ).src = imageData;
-
-        localStorage.setItem(
-            inputId,
-            imageData
-        );
-
-        saveSettings();
-    };
-
-    reader.readAsDataURL(file);
-}
-
-document
-    .getElementById("image1")
-    .addEventListener("change", () => {
-
-        saveImage(
-            "image1",
-            "preview1"
-        );
-
-    });
-
-document
-    .getElementById("image2")
-    .addEventListener("change", () => {
-
-        saveImage(
-            "image2",
-            "preview2"
-        );
-
-    });
-
-/* ===================================================== */
-/* FLARE HELP                                            */
-/* ===================================================== */
-
-function flareHelp() {
-
-    alert(
-
-`Flare values select an option.
-
-0 = First option
-1 = Second option
-2 = Third option
-3 = Fourth option
-4 = Fifth option
-
-Example:
-
-Flare 1 = 2
-
-This selects the third option.`
-
-    );
-}
-
-/* ===================================================== */
-/* APPLICATION LAUNCH                                    */
-/* ===================================================== */
-
-const launchUrl = "https://example.com";
-
-function launchApp() {
-
-    saveSettings();
-
-    window.location.href =
-        launchUrl;
-}
-
-/* ===================================================== */
-/* C# COMMUNICATION                                      */
-/* ===================================================== */
-
-function sendToCSharp(message) {
-
-    if (
-        window.chrome &&
-        window.chrome.webview
-    ) {
-
-        window.chrome.webview
-            .postMessage(message);
-    }
-}
-
-function receiveFromCSharp(message) {
-
-    console.log(
-        "Received:",
-        message
-    );
-
-    if (message === "loaded") {
-
-        finishLoading();
-    }
-}
-
-/* ===================================================== */
-/* AUTO SAVE                                             */
-/* ===================================================== */
-
-document.querySelectorAll("input")
-    .forEach(input => {
-
-        input.addEventListener(
-            "input",
-            saveSettings
-        );
-
-    });
-
-loadSettings();
-
-</script>
-
+    </script>
 </body>
 </html>
