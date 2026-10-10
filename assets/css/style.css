@@ -685,3 +685,8 @@ body.is-ignited .scroll-cue { opacity: 1; }
   html { scroll-behavior: auto; }
   .ticker__track { animation: none; }
 }
+
+@media (max-height: 800px) and (min-width: 761px) {
+  .hud--tl, .hud--tr { display: none; }
+  .hero__title { font-size: clamp(46px, min(10.4vw, 17vh), 190px); }
+}
