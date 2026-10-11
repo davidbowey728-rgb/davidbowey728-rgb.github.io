@@ -3,57 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Molten Institute — Forging Intelligence at its Melting Point</title>
-<meta name="description" content="Molten Institute is an AI research institute advancing large language models, fine-tuning, step-based reasoning, autonomous agents and AI for medicine. Home of Sanila.">
-<meta name="theme-color" content="#050507">
+<title>Molten Institute — Advanced AI Models &amp; Innovation</title>
+<meta name="description" content="Molten Institute is an AI research institute advancing large language models, fine-tuning, step-based reasoning, autonomous agents, interpretability and AI for the life sciences.">
+<meta name="theme-color" content="#020406">
 <link rel="canonical" href="https://moltenresearch.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Molten Institute — AI Research">
-<meta property="og:description" content="We forge intelligence at its melting point. LLMs, fine-tuning, step-based reasoning and AI for medicine.">
+<meta property="og:title" content="Molten Institute — Advanced AI Models & Innovation">
+<meta property="og:description" content="Research in large language models, fine-tuning, step-based reasoning and AI for the life sciences.">
 <meta property="og:url" content="https://moltenresearch.com/">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="assets/img/logo-mark.png">
+<link rel="icon" href="assets/img/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&family=Unbounded:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@500;600;700;800&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="is-loading">
 
-<!-- SVG sprite -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="gMolten" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffd27a"/>
-      <stop offset=".45" stop-color="#ff6a1f"/>
-      <stop offset="1" stop-color="#c8120a"/>
-    </linearGradient>
-  </defs>
-  <symbol id="logo" viewBox="0 0 48 48">
-    <path d="M24 3 42 13.5v21L24 45 6 34.5v-21Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-    <path d="M24 3v6M42 13.5l-5 3M6 13.5l5 3" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
-    <path d="M24 11c5 7 9 11.5 9 16.5a9 9 0 0 1-18 0C15 22.5 19 18 24 11Z" fill="url(#gMolten)"/>
-    <circle cx="20.5" cy="27" r="2.2" fill="#fff" opacity=".75"/>
-  </symbol>
-</svg>
-
-<!-- ============ BOOT ============ -->
-<div class="boot" id="boot" aria-hidden="true">
-  <div class="boot__inner">
-    <svg class="boot__logo"><use href="#logo"/></svg>
-    <pre class="boot__log" id="bootLog"></pre>
-    <div class="boot__bar"><span id="bootBar"></span></div>
-    <div class="boot__meta"><span>MOLTEN//OS · v5.0</span><span id="bootPct">000%</span></div>
-    <div class="boot__skip">click anywhere to skip</div>
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <img class="loader__mark" src="assets/img/logo-mark.png" alt="" width="140" height="128">
+    <div class="loader__word"><b>MOLTEN</b> INSTITUTE</div>
+    <div class="loader__tag">Advanced AI models &amp; innovation</div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
   </div>
-  <div class="boot__flash"></div>
 </div>
 
 <!-- ============ GLOBAL LAYERS ============ -->
-<canvas id="forgeGL" class="layer-gl" aria-hidden="true"></canvas>
-<canvas id="embers" class="layer-embers" aria-hidden="true"></canvas>
+<canvas id="cosmosGL" class="layer-gl" aria-hidden="true"></canvas>
+<canvas id="cosmos" class="layer-cosmos" aria-hidden="true"></canvas>
 <div class="layer-grain" aria-hidden="true"></div>
-<div class="layer-scan" aria-hidden="true"></div>
 <div class="layer-vignette" aria-hidden="true"></div>
 
 <div class="cursor" aria-hidden="true">
@@ -65,137 +46,127 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
-  <a href="#top" class="nav__brand" data-magnetic aria-label="Molten Institute home">
-    <svg class="nav__logo"><use href="#logo"/></svg>
-    <span class="nav__name">MOLTEN<em>INSTITUTE</em></span>
+  <a href="#top" class="brand" aria-label="Molten Institute — home">
+    <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="36" height="33">
+    <span class="brand__word"><b>MOLTEN</b> INSTITUTE</span>
   </a>
   <nav class="nav__links" aria-label="Primary">
-    <a href="#mission" data-hover-scramble>Mission</a>
-    <a href="#research" data-hover-scramble>Research</a>
-    <a href="#forge" data-hover-scramble>Forge</a>
-    <a href="#reasoning" data-hover-scramble>Step Engine</a>
-    <a href="#bio" data-hover-scramble>Bio</a>
-    <a href="#projects" data-hover-scramble>Projects</a>
+    <a href="#research">Research</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#finetuning">Fine-Tuning</a>
+    <a href="#reasoning">Reasoning</a>
+    <a href="#life">Life Sciences</a>
+    <a href="#projects">Projects</a>
   </nav>
   <div class="nav__right">
-    <button class="nav__cmd" id="cmdOpen" aria-label="Open command terminal" data-cursor="CMD"><kbd>Ctrl</kbd><kbd>K</kbd></button>
-    <a class="btn btn--sm btn--molten" href="https://sanila.org" target="_blank" rel="noopener" data-launch data-cursor="LAUNCH"><span>Launch Sanila</span><i>↗</i></a>
+    <button class="nav__cmd" id="cmdOpen" aria-label="Open quick navigation"><span>Search</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
     <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mmenu" id="mmenu" aria-hidden="true">
   <nav>
-    <a href="#mission"><small>01</small>Mission</a>
-    <a href="#research"><small>02</small>Research</a>
-    <a href="#forge"><small>03</small>Forge</a>
-    <a href="#reasoning"><small>04</small>Step Engine</a>
-    <a href="#bio"><small>05</small>Bio//Compute</a>
+    <a href="#research"><small>01</small>Research</a>
+    <a href="#pipeline"><small>02</small>Pipeline</a>
+    <a href="#finetuning"><small>03</small>Fine-Tuning</a>
+    <a href="#reasoning"><small>04</small>Reasoning</a>
+    <a href="#life"><small>05</small>Life Sciences</a>
     <a href="#projects"><small>06</small>Projects</a>
   </nav>
-  <a class="btn btn--molten" href="https://sanila.org" target="_blank" rel="noopener" data-launch><span>Launch Sanila</span><i>↗</i></a>
 </div>
 
 <aside class="rail" aria-hidden="true">
-  <a href="#top" data-rail="top"><span>00</span><em>Core</em></a>
-  <a href="#mission" data-rail="mission"><span>01</span><em>Mission</em></a>
+  <a href="#top" data-rail="top"><span>00</span><em>Overview</em></a>
+  <a href="#about" data-rail="about"><span>01</span><em>About</em></a>
   <a href="#research" data-rail="research"><span>02</span><em>Research</em></a>
-  <a href="#forge" data-rail="forge"><span>03</span><em>Forge</em></a>
-  <a href="#reasoning" data-rail="reasoning"><span>04</span><em>Step Engine</em></a>
-  <a href="#bio" data-rail="bio"><span>05</span><em>Bio</em></a>
-  <a href="#projects" data-rail="projects"><span>06</span><em>Projects</em></a>
+  <a href="#pipeline" data-rail="pipeline"><span>03</span><em>Pipeline</em></a>
+  <a href="#finetuning" data-rail="finetuning"><span>04</span><em>Fine-Tuning</em></a>
+  <a href="#attention" data-rail="attention"><span>05</span><em>Attention</em></a>
+  <a href="#reasoning" data-rail="reasoning"><span>06</span><em>Reasoning</em></a>
+  <a href="#life" data-rail="life"><span>07</span><em>Life Sciences</em></a>
+  <a href="#projects" data-rail="projects"><span>08</span><em>Projects</em></a>
 </aside>
 
 <main id="main">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" data-section>
-  <div class="hud hud--tl"><span class="hud__k">CORE TEMP</span><span class="hud__v" id="coreTemp">1,412 K</span></div>
-  <div class="hud hud--tr"><span class="hud__k">UTC</span><span class="hud__v" id="utc">--:--:--</span></div>
-  <div class="hud hud--bl"><span class="hud__k">VECTOR</span><span class="hud__v" id="coords">x +0.000 · y +0.000</span></div>
-  <div class="hud hud--br"><span class="hud__k">SIGNAL</span><span class="hud__v"><i class="pulse"></i>SANILA UPLINK LIVE</span></div>
-
-  <div class="hero__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
+  <div class="hero__scrim" aria-hidden="true"></div>
   <div class="hero__content">
-    <p class="eyebrow hero__eyebrow"><span class="eyebrow__line"></span>AI Research Institute · moltenresearch.com</p>
+    <p class="eyebrow hero__eyebrow"><span class="eyebrow__line"></span>AI Research Institute</p>
     <h1 class="hero__title">
-      <span class="line"><span class="word" data-scramble-hero>MOLTEN</span></span>
-      <span class="line"><span class="word word--outline" data-scramble-hero>INSTITUTE</span></span>
+      <span class="line"><span class="word">Advanced AI models</span></span>
+      <span class="line"><span class="word word--grad">&amp; innovation.</span></span>
     </h1>
-    <p class="hero__tag">We forge intelligence at its <span class="heat">melting point</span>.</p>
-    <p class="hero__sub">Frontier research in large language models, fine-tuning, step-based reasoning, autonomous agents and AI-driven medicine.</p>
+    <p class="hero__sub">Molten Institute is an independent research institute studying large language models, fine-tuning, step-based reasoning and AI for the life sciences.</p>
     <div class="hero__cta">
-      <a href="#research" class="btn btn--molten" data-magnetic data-cursor="DIVE"><span>Explore Research</span><i>→</i></a>
-      <a href="https://sanila.org" target="_blank" rel="noopener" class="btn btn--ghost" data-magnetic data-launch data-cursor="LAUNCH"><span>Launch Sanila</span><i>↗</i></a>
+      <a href="#research" class="btn btn--primary" data-magnetic><span>Explore research</span><i>→</i></a>
+      <a href="#projects" class="btn btn--ghost" data-magnetic><span>View projects</span><i>→</i></a>
     </div>
   </div>
 
-  <a href="#mission" class="scroll-cue" data-cursor="DESCEND"><span>Scroll to descend</span><i></i></a>
+  <div class="hero__hint" aria-hidden="true">
+    <span><kbd>Click</kbd> trigger a nova</span>
+    <span><kbd>Hold</kbd> bend spacetime</span>
+    <span><kbd>Move</kbd> gravitational lens</span>
+  </div>
+  <div class="hud hud--bl" aria-hidden="true"><span class="hud__k">Cursor</span><span class="hud__v" id="hudCoords">RA 00h 00m 00s · Dec +00° 00′</span></div>
+  <div class="hud hud--br" aria-hidden="true"><span class="hud__k">Rendered</span><span class="hud__v"><b id="hudCount">0</b> equations &amp; symbols</span></div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll to content"><i></i></a>
 </section>
 
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
-  <div class="ticker__track" id="tickerTrack">
-    <span>Large Language Models</span><b>◆</b><span>Fine-Tuning</span><b>◆</b><span>Step-Based Reasoning</span><b>◆</b><span>Alignment</span><b>◆</b><span>AI for Medicine</span><b>◆</b><span>Autonomous Agents</span><b>◆</b><span>Interpretability</span><b>◆</b><span>Efficient Inference</span><b>◆</b>
-    <span>Large Language Models</span><b>◆</b><span>Fine-Tuning</span><b>◆</b><span>Step-Based Reasoning</span><b>◆</b><span>Alignment</span><b>◆</b><span>AI for Medicine</span><b>◆</b><span>Autonomous Agents</span><b>◆</b><span>Interpretability</span><b>◆</b><span>Efficient Inference</span><b>◆</b>
+  <div class="ticker__track">
+    <span>Large Language Models</span><b>◆</b><span>Fine-Tuning</span><b>◆</b><span>Step-Based Reasoning</span><b>◆</b><span>Preference Optimization</span><b>◆</b><span>AI for Medicine</span><b>◆</b><span>Autonomous Agents</span><b>◆</b><span>Interpretability</span><b>◆</b><span>Efficient Inference</span><b>◆</b>
+    <span>Large Language Models</span><b>◆</b><span>Fine-Tuning</span><b>◆</b><span>Step-Based Reasoning</span><b>◆</b><span>Preference Optimization</span><b>◆</b><span>AI for Medicine</span><b>◆</b><span>Autonomous Agents</span><b>◆</b><span>Interpretability</span><b>◆</b><span>Efficient Inference</span><b>◆</b>
   </div>
 </div>
 
-<!-- ============ MISSION ============ -->
-<section class="section mission" id="mission" data-section>
-  <div class="shead" data-reveal>
-    <span class="shead__idx">01</span><span class="shead__tag">// Mission</span><span class="shead__rule"></span>
-  </div>
-  <p class="mission__text" id="missionText">Intelligence isn't discovered. It's <em>forged</em> — under pressure, at extreme heat, one layer at a time. Molten Institute exists to push artificial intelligence past its current <em>melting point</em>: models that reason in <em>steps</em>, learn through precise <em>fine-tuning</em>, act as <em>agents</em>, and turn computation into <em>cures</em>.</p>
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about" data-section>
+  <div class="shead" data-reveal><span class="shead__idx">01</span><span class="shead__tag">About</span><span class="shead__rule"></span></div>
+  <p class="about__text" id="aboutText">Molten Institute studies how <em>intelligence emerges</em> in large models — and how to <em>shape it</em>. We train and adapt language models, teach them to <em>reason step by step</em>, and apply them where precision matters most, including <em>medicine</em> and the life sciences.</p>
 
-  <div class="stats">
-    <div class="stat" data-reveal style="--d:0">
-      <div class="stat__num"><span data-count="6">0</span></div>
-      <div class="stat__label">Research vectors</div>
-      <div class="stat__bar"><i></i></div>
+  <div class="principles">
+    <div class="principle" data-reveal style="--d:0">
+      <span class="principle__no">I</span>
+      <h3>Rigor</h3>
+      <p>Every claim is measured. We design evaluations before we design models, and we report what doesn't work as carefully as what does.</p>
     </div>
-    <div class="stat" data-reveal style="--d:1">
-      <div class="stat__num"><span data-count="1">0</span></div>
-      <div class="stat__label">Flagship model live</div>
-      <div class="stat__bar"><i></i></div>
+    <div class="principle" data-reveal style="--d:1">
+      <span class="principle__no">II</span>
+      <h3>Efficiency</h3>
+      <p>Capability per unit of compute matters. We develop methods that make strong models cheaper to train, adapt and serve.</p>
     </div>
-    <div class="stat" data-reveal style="--d:2">
-      <div class="stat__num"><span>24/7</span></div>
-      <div class="stat__label">Lab never cools</div>
-      <div class="stat__bar"><i></i></div>
-    </div>
-    <div class="stat" data-reveal style="--d:3">
-      <div class="stat__num"><span>∞</span></div>
-      <div class="stat__label">Open questions</div>
-      <div class="stat__bar"><i></i></div>
+    <div class="principle" data-reveal style="--d:2">
+      <span class="principle__no">III</span>
+      <h3>Application</h3>
+      <p>Research is judged by what it enables — from more capable assistants to faster, better-informed drug discovery.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ RESEARCH ============ -->
 <section class="section research" id="research" data-section>
-  <div class="shead" data-reveal>
-    <span class="shead__idx">02</span><span class="shead__tag">// Research</span><span class="shead__rule"></span>
-  </div>
+  <div class="shead" data-reveal><span class="shead__idx">02</span><span class="shead__tag">Research</span><span class="shead__rule"></span></div>
   <div class="stitle-wrap">
-    <h2 class="stitle" data-split>Research <em>Vectors</em></h2>
-    <p class="slede" data-reveal>Six directions, one goal: intelligence that is more capable, more precise and more useful. Hover a vector to energize it. Open its dossier to go deeper.</p>
+    <h2 class="stitle" data-split>Research <em>areas</em></h2>
+    <p class="slede" data-reveal>Six connected programs, one goal: models that are more capable, more reliable and more useful. Select an area to read more.</p>
   </div>
 
   <div class="rgrid">
-    <!-- 01 -->
-    <article class="rcard" data-tilt data-reveal style="--d:0" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:0" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="llm"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-01</span><span class="rcard__status"><i></i>Active</span></div>
+      <div class="rcard__top"><span class="rcard__no">01</span><span class="rcard__area">Foundation models</span></div>
       <h3 class="rcard__title">Large Language Models</h3>
-      <p class="rcard__desc">Foundation architectures at frontier scale. How capability emerges from data, depth and compute — and how to engineer it deliberately.</p>
+      <p class="rcard__desc">How capability emerges from data, architecture and compute — and how to engineer it deliberately.</p>
       <ul class="rcard__tags"><li>Pretraining</li><li>Scaling laws</li><li>Architecture</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
         <p>Our LLM program studies the full lifecycle of foundation models — from tokenizer design and data mixtures to architectural choices like mixture-of-experts, long-context attention and state-space hybrids.</p>
-        <p>We treat scale as an engineering discipline, not brute force: predicting capability before we train it, and spending compute where it buys the most intelligence.</p>
+        <p>We treat scale as an engineering discipline: predicting capability before training, and spending compute where it buys the most.</p>
         <h4>Open questions</h4>
         <ul>
           <li>How do data quality and mixture shape emergent capability?</li>
@@ -203,24 +174,23 @@
           <li>How far can effective context length be pushed without degradation?</li>
         </ul>
         <h4>Methods</h4>
-        <div class="chips"><span>Transformer variants</span><span>MoE</span><span>Long context</span><span>Data curation</span><span>Scaling laws</span></div>
+        <div class="chips"><span>Transformer variants</span><span>Mixture-of-experts</span><span>Long context</span><span>Data curation</span><span>Scaling laws</span></div>
       </template>
     </article>
-    <!-- 02 -->
-    <article class="rcard" data-tilt data-reveal style="--d:1" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:1" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="finetune"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-02</span><span class="rcard__status"><i></i>Active</span></div>
-      <h3 class="rcard__title">Fine-Tuning</h3>
-      <p class="rcard__desc">Turning raw capability into precision. Parameter-efficient adaptation, instruction tuning, preference optimization and domain specialization.</p>
-      <ul class="rcard__tags"><li>LoRA / QLoRA</li><li>SFT</li><li>DPO · RLHF</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <div class="rcard__top"><span class="rcard__no">02</span><span class="rcard__area">Adaptation</span></div>
+      <h3 class="rcard__title">Fine-Tuning &amp; Alignment</h3>
+      <p class="rcard__desc">Parameter-efficient adaptation, instruction tuning, preference optimization and domain specialization.</p>
+      <ul class="rcard__tags"><li>LoRA · QLoRA</li><li>SFT</li><li>RLHF · DPO</li></ul>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
-        <p>Pretraining gives a model breadth. Fine-tuning gives it purpose. We research parameter-efficient methods (LoRA, QLoRA, adapters), instruction tuning, and preference optimization — RLHF, DPO and their successors.</p>
-        <p>A core focus: specializing a model for a domain without catastrophic forgetting of everything else it knows.</p>
+        <p>Pretraining gives a model breadth; fine-tuning gives it purpose. We research parameter-efficient methods (LoRA, QLoRA, adapters), instruction tuning, and preference optimization — RLHF, DPO and their successors.</p>
+        <p>A central focus is specializing a model for a domain without catastrophic forgetting. Try the trade-offs yourself in the <a href="#finetuning">Fine-Tuning Lab</a>.</p>
         <h4>Open questions</h4>
         <ul>
-          <li>What is the minimum data needed to install a new skill?</li>
+          <li>What is the minimum data needed to teach a model a new skill?</li>
           <li>How do we specialize without eroding general reasoning?</li>
           <li>Can preference optimization be made stable, cheap and reproducible?</li>
         </ul>
@@ -228,87 +198,83 @@
         <div class="chips"><span>LoRA</span><span>QLoRA</span><span>SFT</span><span>RLHF</span><span>DPO</span><span>Synthetic data</span></div>
       </template>
     </article>
-    <!-- 03 -->
-    <article class="rcard" data-tilt data-reveal style="--d:2" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:2" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="steps"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-03</span><span class="rcard__status"><i></i>Active</span></div>
+      <div class="rcard__top"><span class="rcard__no">03</span><span class="rcard__area">Reasoning</span></div>
       <h3 class="rcard__title">Step-Based Reasoning</h3>
-      <p class="rcard__desc">Models that think before they answer. Process supervision, verifiable intermediate steps and search over chains of thought.</p>
+      <p class="rcard__desc">Models that think before they answer: process supervision, verifiable intermediate steps and search over reasoning paths.</p>
       <ul class="rcard__tags"><li>Chain-of-thought</li><li>Process rewards</li><li>Test-time compute</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
         <p>Step-based LLMs break problems into explicit intermediate steps that can be checked, scored and searched. We train process reward models that grade each step, explore tree and beam search over reasoning paths, and study how to spend test-time compute where it matters most.</p>
-        <p>See it in action in the <a href="#reasoning" data-close-dossier>Step Engine</a> below.</p>
+        <p>See a simulated trace in the <a href="#reasoning">reasoning visualizer</a>.</p>
         <h4>Open questions</h4>
         <ul>
           <li>How do we verify a reasoning step without a ground-truth answer?</li>
-          <li>When does more thinking stop helping?</li>
-          <li>Can models learn to backtrack from their own mistakes?</li>
+          <li>When does additional thinking stop helping?</li>
+          <li>Can models learn to recognise and recover from their own mistakes?</li>
         </ul>
         <h4>Methods</h4>
-        <div class="chips"><span>PRMs</span><span>Tree search</span><span>Self-verification</span><span>RL on reasoning</span></div>
+        <div class="chips"><span>Process reward models</span><span>Tree search</span><span>Self-verification</span><span>RL on reasoning</span></div>
       </template>
     </article>
-    <!-- 04 -->
-    <article class="rcard" data-tilt data-reveal style="--d:3" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:3" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="med"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-04</span><span class="rcard__status"><i></i>Active</span></div>
+      <div class="rcard__top"><span class="rcard__no">04</span><span class="rcard__area">Life sciences</span></div>
       <h3 class="rcard__title">AI for Medicine</h3>
-      <p class="rcard__desc">Learned representations for biology and chemistry: molecular property prediction, drug candidate discovery and clinical decision support.</p>
+      <p class="rcard__desc">Learned representations for biology and chemistry: molecular property prediction, candidate discovery and clinical decision support.</p>
       <ul class="rcard__tags"><li>Molecular ML</li><li>Drug discovery</li><li>Diagnostics</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
         <p>We apply learned representations to the language of biology and chemistry: molecular property prediction, generative design of drug candidates, protein–ligand interaction modeling, and AI-assisted analysis of clinical data.</p>
-        <p>Our medical research is computational, designed to accelerate — never replace — laboratory and clinical validation.</p>
+        <p>Our medical research is computational and designed to accelerate — never replace — laboratory and clinical validation.</p>
         <h4>Open questions</h4>
         <ul>
           <li>Does language-model-style pretraining on molecules transfer to new targets?</li>
-          <li>How do we quantify model uncertainty well enough for clinical settings?</li>
+          <li>How do we quantify uncertainty well enough for clinical settings?</li>
           <li>Which generated candidates are worth synthesizing first?</li>
         </ul>
         <h4>Methods</h4>
-        <div class="chips"><span>Graph neural nets</span><span>Molecular LMs</span><span>Generative chemistry</span><span>Uncertainty</span></div>
+        <div class="chips"><span>Graph neural networks</span><span>Molecular language models</span><span>Generative chemistry</span><span>Uncertainty estimation</span></div>
       </template>
     </article>
-    <!-- 05 -->
-    <article class="rcard" data-tilt data-reveal style="--d:4" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:4" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="agents"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-05</span><span class="rcard__status"><i></i>Active</span></div>
+      <div class="rcard__top"><span class="rcard__no">05</span><span class="rcard__area">Systems</span></div>
       <h3 class="rcard__title">Autonomous Agents</h3>
       <p class="rcard__desc">Long-horizon systems that plan, use tools, write and run code, remember, and correct themselves.</p>
       <ul class="rcard__tags"><li>Tool use</li><li>Planning</li><li>Memory</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
-        <p>Agents turn models into actors. We research planning over long horizons, reliable tool and API use, code execution, persistent memory and self-correction — plus the evaluations needed to know when an agent can be trusted with a task.</p>
+        <p>Agents turn models into actors. We research planning over long horizons, reliable tool and API use, code execution, persistent memory and self-correction — and the evaluations needed to know when an agent can be trusted with a task.</p>
         <h4>Open questions</h4>
         <ul>
-          <li>How do errors compound over hundreds of actions — and how do we stop them?</li>
-          <li>What memory architecture lets an agent learn on the job?</li>
+          <li>How do errors compound over hundreds of actions, and how do we contain them?</li>
+          <li>What memory architecture lets an agent improve on the job?</li>
           <li>How do we measure reliability, not just capability?</li>
         </ul>
         <h4>Methods</h4>
-        <div class="chips"><span>Tool calling</span><span>Code agents</span><span>Hierarchical planning</span><span>Agent evals</span></div>
+        <div class="chips"><span>Tool calling</span><span>Code agents</span><span>Hierarchical planning</span><span>Agent evaluation</span></div>
       </template>
     </article>
-    <!-- 06 -->
-    <article class="rcard" data-tilt data-reveal style="--d:5" tabindex="0" data-cursor="OPEN">
+    <article class="rcard" data-tilt data-reveal style="--d:5" tabindex="0" data-cursor="Read">
       <div class="rcard__glare"></div>
       <canvas class="rcard__viz" data-viz="interp"></canvas>
-      <div class="rcard__top"><span class="rcard__no">V-06</span><span class="rcard__status"><i></i>Active</span></div>
+      <div class="rcard__top"><span class="rcard__no">06</span><span class="rcard__area">Understanding</span></div>
       <h3 class="rcard__title">Interpretability &amp; Efficiency</h3>
-      <p class="rcard__desc">Opening the black box and shrinking the footprint: mechanistic analysis, quantization, distillation and fast inference.</p>
-      <ul class="rcard__tags"><li>Mech interp</li><li>Quantization</li><li>Distillation</li></ul>
-      <span class="rcard__more">Open dossier <i>+</i></span>
+      <p class="rcard__desc">Understanding what models compute internally — and compressing them through quantization, distillation and faster inference.</p>
+      <ul class="rcard__tags"><li>Mechanistic interpretability</li><li>Quantization</li><li>Distillation</li></ul>
+      <span class="rcard__more">Read more <i>+</i></span>
       <template class="rcard__dossier">
-        <p>We open models up to understand the circuits behind their behavior — and compress them so frontier capability runs on less hardware.</p>
-        <p>Understanding and efficiency are two sides of the same coin: when you know what a network is doing, you know what you can safely remove.</p>
+        <p>We study the circuits behind model behavior, and we compress models so strong capability runs on less hardware.</p>
+        <p>Understanding and efficiency are linked: when you know what a network is doing, you know what can be removed safely. Explore a simplified view in the <a href="#attention">attention visualizer</a>.</p>
         <h4>Open questions</h4>
         <ul>
-          <li>Which internal features drive reasoning, and can we steer them?</li>
-          <li>How low can precision go before capability breaks?</li>
+          <li>Which internal features drive reasoning, and can they be steered?</li>
+          <li>How low can numerical precision go before capability degrades?</li>
           <li>Can a small model inherit a large model's reasoning, not just its answers?</li>
         </ul>
         <h4>Methods</h4>
@@ -318,110 +284,187 @@
   </div>
 </section>
 
-<!-- ============ FORGE (horizontal) ============ -->
-<section class="forge" id="forge" data-section>
-  <div class="forge__sticky">
-    <div class="forge__head">
-      <div class="shead">
-        <span class="shead__idx">03</span><span class="shead__tag">// The Forge</span><span class="shead__rule"></span>
-      </div>
-      <div class="forge__titlerow">
-        <h2 class="stitle" data-split>How a model is <em>born</em></h2>
-        <div class="forge__gauge">
-          <span class="forge__gauge-k">Forge temperature</span>
-          <span class="forge__gauge-v" id="forgeTemp">300 K</span>
+<!-- ============ PIPELINE (horizontal) ============ -->
+<section class="pipeline" id="pipeline" data-section>
+  <div class="pipeline__sticky">
+    <div class="pipeline__head">
+      <div class="shead"><span class="shead__idx">03</span><span class="shead__tag">Training pipeline</span><span class="shead__rule"></span></div>
+      <div class="pipeline__titlerow">
+        <h2 class="stitle" data-split>From data to <em>deployment</em></h2>
+        <div class="pipeline__gauge">
+          <span class="pipeline__gauge-k">Stage</span>
+          <span class="pipeline__gauge-v"><b id="pipeStage">01</b> / 06</span>
+          <span class="pipeline__gauge-n" id="pipeName">Data curation</span>
         </div>
       </div>
     </div>
-
-    <div class="forge__track" id="forgeTrack">
-      <div class="stage">
+    <div class="pipeline__track" id="pipeTrack">
+      <div class="stage" data-name="Data curation">
         <div class="stage__num">01</div>
-        <canvas class="stage__viz" data-stage="ore"></canvas>
-        <div class="stage__body">
-          <span class="stage__phase">Phase · Data</span>
-          <h3>Raw Ore</h3>
-          <p>Trillions of tokens — text, code, science — filtered, deduplicated and weighted. Quality is the first law of intelligence.</p>
-        </div>
+        <canvas class="stage__viz" data-stage="curation"></canvas>
+        <div class="stage__body"><span class="stage__phase">Data</span><h3>Data curation</h3><p>Text, code and scientific data are filtered for quality, deduplicated and mixed. Data quality sets the ceiling for everything that follows.</p></div>
       </div>
-      <div class="stage">
+      <div class="stage" data-name="Pretraining">
         <div class="stage__num">02</div>
-        <canvas class="stage__viz" data-stage="smelt"></canvas>
-        <div class="stage__body">
-          <span class="stage__phase">Phase · Pretraining</span>
-          <h3>Smelt</h3>
-          <p>Next-token prediction at scale melts raw text into general capability: language, knowledge and the first sparks of reasoning.</p>
-        </div>
+        <canvas class="stage__viz" data-stage="pretrain"></canvas>
+        <div class="stage__body"><span class="stage__phase">Foundation</span><h3>Pretraining</h3><p>Next-token prediction at scale builds general capability: language, world knowledge and the beginnings of reasoning.</p></div>
       </div>
-      <div class="stage">
+      <div class="stage" data-name="Supervised fine-tuning">
         <div class="stage__num">03</div>
-        <canvas class="stage__viz" data-stage="temper"></canvas>
-        <div class="stage__body">
-          <span class="stage__phase">Phase · Fine-tuning</span>
-          <h3>Temper</h3>
-          <p>Supervised and preference tuning harden the model into something precise, steerable and genuinely useful.</p>
-        </div>
+        <canvas class="stage__viz" data-stage="sft"></canvas>
+        <div class="stage__body"><span class="stage__phase">Adaptation</span><h3>Supervised fine-tuning</h3><p>Curated demonstrations teach the model to follow instructions, use tools and respond in useful formats.</p></div>
       </div>
-      <div class="stage">
+      <div class="stage" data-name="Preference optimization">
         <div class="stage__num">04</div>
-        <canvas class="stage__viz" data-stage="steps"></canvas>
-        <div class="stage__body">
-          <span class="stage__phase">Phase · Reasoning</span>
-          <h3>Forge Steps</h3>
-          <p>Process-level training teaches the model to decompose, verify, backtrack and search — thinking in steps, not leaps.</p>
-        </div>
+        <canvas class="stage__viz" data-stage="preference"></canvas>
+        <div class="stage__body"><span class="stage__phase">Alignment</span><h3>Preference optimization</h3><p>Pairwise preferences — through RLHF or direct methods like DPO — steer the model toward responses people actually prefer.</p></div>
       </div>
-      <div class="stage">
+      <div class="stage" data-name="Reasoning training">
         <div class="stage__num">05</div>
-        <canvas class="stage__viz" data-stage="quench"></canvas>
-        <div class="stage__body">
-          <span class="stage__phase">Phase · Deployment</span>
-          <h3>Quench</h3>
-          <p>Adversarial evaluation, benchmarking and release. The model cools into its final form — and goes out into the world.</p>
-        </div>
+        <canvas class="stage__viz" data-stage="reasoning"></canvas>
+        <div class="stage__body"><span class="stage__phase">Reasoning</span><h3>Reasoning training</h3><p>Process supervision and reinforcement learning on verifiable problems teach the model to decompose, check and revise its work.</p></div>
+      </div>
+      <div class="stage" data-name="Evaluation &amp; deployment">
+        <div class="stage__num">06</div>
+        <canvas class="stage__viz" data-stage="evaluation"></canvas>
+        <div class="stage__body"><span class="stage__phase">Release</span><h3>Evaluation &amp; deployment</h3><p>Broad capability and safety evaluations, red-teaming and efficient serving before a model reaches users.</p></div>
       </div>
     </div>
-
-    <div class="forge__foot">
-      <div class="forge__progress"><span id="forgeBar"></span></div>
-      <div class="forge__stages" id="forgeDots"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pipeline__foot">
+      <div class="pipeline__progress"><span id="pipeBar"></span></div>
+      <div class="pipeline__dots" id="pipeDots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
 </section>
 
-<!-- ============ STEP ENGINE ============ -->
-<section class="section reason" id="reasoning" data-section>
-  <div class="shead" data-reveal>
-    <span class="shead__idx">04</span><span class="shead__tag">// Step Engine</span><span class="shead__rule"></span>
-  </div>
+<!-- ============ FINE-TUNING LAB ============ -->
+<section class="section finetuning" id="finetuning" data-section>
+  <div class="shead" data-reveal><span class="shead__idx">04</span><span class="shead__tag">Fine-Tuning Lab</span><span class="shead__rule"></span></div>
   <div class="stitle-wrap">
-    <h2 class="stitle" data-split>Watch a model <em>think</em></h2>
-    <p class="slede" data-reveal>Step-based models don't leap to answers. They decompose, propose, verify and prune. Pick a problem and watch a simulated reasoning trace unfold — the process at the heart of our research.</p>
+    <h2 class="stitle" data-split>Fine-tuning, <em>measured</em></h2>
+    <p class="slede" data-reveal>Choose a method, a base model and hyperparameters, then train. Trainable parameters and memory are computed from real model dimensions; training curves are simulated to show typical behavior.</p>
   </div>
 
-  <div class="engine" data-reveal>
-    <div class="engine__chrome">
+  <div class="lab panel" id="ftLab" data-reveal>
+    <div class="panel__chrome">
       <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="engine__title">molten://step-engine — simulated trace</span>
+      <span class="panel__title">fine-tuning lab</span>
+      <span class="lab__status" id="ftStatus">READY</span>
+    </div>
+    <div class="lab__body">
+      <aside class="lab__controls">
+        <div class="ctl">
+          <span class="ctl__label">Method</span>
+          <div class="seg" data-ctl="method">
+            <button type="button" data-v="full" aria-pressed="false">Full</button>
+            <button type="button" data-v="lora" class="is-on" aria-pressed="true">LoRA</button>
+            <button type="button" data-v="qlora" aria-pressed="false">QLoRA</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <span class="ctl__label">Base model</span>
+          <div class="seg" data-ctl="size">
+            <button type="button" data-v="1" aria-pressed="false">1B</button>
+            <button type="button" data-v="7" class="is-on" aria-pressed="true">7B</button>
+            <button type="button" data-v="13" aria-pressed="false">13B</button>
+            <button type="button" data-v="70" aria-pressed="false">70B</button>
+          </div>
+        </div>
+        <div class="ctl ctl--rank">
+          <label class="ctl__label" for="inRank">Adapter rank <b id="vRank">16</b></label>
+          <input type="range" id="inRank" min="0" max="7" step="1" value="3">
+          <div class="ctl__scale"><span>2</span><span>256</span></div>
+        </div>
+        <div class="ctl">
+          <label class="ctl__label" for="inLr">Learning rate <b id="vLr">2e-4</b></label>
+          <input type="range" id="inLr" min="0" max="100" step="1" value="70">
+          <div class="ctl__scale"><span>1e-6</span><span>3e-3</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm lab__run" id="ftRun" type="button"><span>Train</span><i>▶</i></button>
+      </aside>
+      <div class="lab__main">
+        <div class="lab__chart"><canvas id="ftLoss"></canvas></div>
+        <div class="lab__matrix"><canvas id="ftMatrix"></canvas></div>
+        <div class="lab__stats">
+          <div><span>Trainable params</span><b id="ftParams">—</b></div>
+          <div><span>Of model</span><b id="ftPct">—</b></div>
+          <div><span>Est. memory</span><b id="ftMem">—</b></div>
+          <div><span>Fits on</span><b id="ftGpu">—</b></div>
+          <div><span>Step</span><b id="ftStep">0</b></div>
+          <div><span>Train loss</span><b id="ftLossVal">—</b></div>
+        </div>
+        <p class="lab__verdict" id="ftVerdict">Adjust the controls to begin.</p>
+        <p class="lab__note">LoRA applied to the q, k, v and o projections in every layer. Memory covers weights, gradients and Adam optimizer state; activations excluded.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATTENTION ============ -->
+<section class="section attention" id="attention" data-section>
+  <div class="shead" data-reveal><span class="shead__idx">05</span><span class="shead__tag">Inside the transformer</span><span class="shead__rule"></span></div>
+  <div class="stitle-wrap">
+    <h2 class="stitle" data-split>Attention, <em>visualized</em></h2>
+    <p class="slede" data-reveal>Every token decides where to look. Hover over a token to see its attention weights; switch heads to see the different patterns heads learn. Weights here are illustrative.</p>
+  </div>
+  <div class="attn panel" id="attn" data-reveal>
+    <div class="panel__chrome">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="panel__title">layer 12 · causal self-attention</span>
+    </div>
+    <div class="attn__body">
+      <div class="attn__left">
+        <div class="seg seg--wide" data-ctl="head">
+          <button type="button" data-v="0" class="is-on" aria-pressed="true">Head 1 · Previous token</button>
+          <button type="button" data-v="1" aria-pressed="false">Head 2 · Syntax</button>
+          <button type="button" data-v="2" aria-pressed="false">Head 3 · Long-range</button>
+          <button type="button" data-v="3" aria-pressed="false">Head 4 · Sink</button>
+        </div>
+        <div class="attn__stage">
+          <canvas id="attnArcs"></canvas>
+          <div class="attn__tokens" id="attnTokens"></div>
+        </div>
+        <p class="attn__desc" id="attnDesc"></p>
+      </div>
+      <div class="attn__right">
+        <span class="engine__label">Attention matrix · softmax(QKᵀ/√dₖ)</span>
+        <canvas id="attnMatrix"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REASONING ============ -->
+<section class="section reason" id="reasoning" data-section>
+  <div class="shead" data-reveal><span class="shead__idx">06</span><span class="shead__tag">Step-based reasoning</span><span class="shead__rule"></span></div>
+  <div class="stitle-wrap">
+    <h2 class="stitle" data-split>Watch a model <em>reason</em></h2>
+    <p class="slede" data-reveal>Step-based models decompose a problem, propose steps, verify each one and prune what fails. Pick a problem to see a simulated trace scored by a process reward model.</p>
+  </div>
+
+  <div class="engine panel" data-reveal>
+    <div class="panel__chrome">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="panel__title">reasoning trace · simulated</span>
       <span class="engine__status" id="rStatus">IDLE</span>
     </div>
     <div class="engine__body">
       <aside class="engine__side">
-        <span class="engine__label">Select problem</span>
-        <div class="engine__presets" id="rPresets">
-          <button class="preset is-active" data-preset="physics" data-cursor="RUN"><small>01 · Physics</small>Reactor heating time</button>
-          <button class="preset" data-preset="medicine" data-cursor="RUN"><small>02 · Medicine</small>Screening a drug candidate</button>
-          <button class="preset" data-preset="debug" data-cursor="RUN"><small>03 · ML Debug</small>Loss goes NaN</button>
+        <span class="engine__label">Problem</span>
+        <div class="engine__presets">
+          <button type="button" class="preset is-active" data-preset="physics"><small>01 · Physics</small>Heating time</button>
+          <button type="button" class="preset" data-preset="medicine"><small>02 · Medicine</small>Screening drug candidates</button>
+          <button type="button" class="preset" data-preset="debug"><small>03 · Machine learning</small>Loss becomes NaN</button>
         </div>
-        <span class="engine__label">Telemetry</span>
+        <span class="engine__label">Metrics</span>
         <div class="engine__metrics">
           <div><span>Tokens</span><b id="mTokens">0</b></div>
           <div><span>Steps</span><b id="mSteps">0</b></div>
           <div><span>Pruned</span><b id="mPruned">0</b></div>
-          <div><span>Verifier</span><b id="mConf">—</b></div>
+          <div><span>PRM score</span><b id="mConf">—</b></div>
         </div>
         <div class="engine__conf"><span id="mConfBar"></span></div>
-        <button class="btn btn--ghost btn--sm engine__rerun" id="rRerun" data-cursor="RUN"><span>Re-run trace</span><i>↻</i></button>
+        <button type="button" class="btn btn--ghost btn--sm engine__rerun" id="rRerun"><span>Run again</span><i>↻</i></button>
       </aside>
       <div class="engine__stage">
         <div class="engine__prompt"><span class="engine__sign">›</span><span id="rPrompt"></span><span class="caret"></span></div>
@@ -432,25 +475,23 @@
   </div>
 </section>
 
-<!-- ============ BIO ============ -->
-<section class="section bio" id="bio" data-section>
-  <div class="bio__grid">
-    <div class="bio__visual" data-reveal>
+<!-- ============ LIFE SCIENCES ============ -->
+<section class="section life" id="life" data-section>
+  <div class="life__grid">
+    <div class="life__visual" data-reveal>
       <canvas id="helix" aria-hidden="true"></canvas>
-      <div class="bio__hud bio__hud--a"><span>SEQ</span><b id="seqReadout">ATG·CCA·GTT·ACG</b></div>
-      <div class="bio__hud bio__hud--b"><span>BINDING AFFINITY</span><b id="affReadout">−9.4 kcal/mol</b></div>
-      <div class="bio__hud bio__hud--c"><span>MODE</span><b>SIMULATION</b></div>
+      <div class="life__hud life__hud--a"><span>Sequence window</span><b id="seqReadout">ATG·CCA·GTT·ACG</b></div>
+      <div class="life__hud life__hud--b"><span>Predicted binding ΔG</span><b id="affReadout">−9.4 kcal/mol</b></div>
+      <div class="life__hud life__hud--c"><span>Mode</span><b>Simulation</b></div>
     </div>
-    <div class="bio__copy">
-      <div class="shead" data-reveal>
-        <span class="shead__idx">05</span><span class="shead__tag">// Bio·Compute</span><span class="shead__rule"></span>
-      </div>
-      <h2 class="stitle" data-split>From sequence <em>to cure</em></h2>
-      <p class="slede" data-reveal>Biology is a language. Chemistry is a grammar. We teach models to read both — so the search for new medicines can move at the speed of computation.</p>
-      <ul class="bio__list">
-        <li data-reveal style="--d:0"><span>01</span><div><h4>Molecular generation</h4><p>Generative models that propose novel, synthesizable drug candidates with target properties.</p></div></li>
-        <li data-reveal style="--d:1"><span>02</span><div><h4>Target &amp; protein modeling</h4><p>Predicting how molecules bind, fold and interact — before anything enters a lab.</p></div></li>
-        <li data-reveal style="--d:2"><span>03</span><div><h4>Clinical signal</h4><p>AI-assisted analysis of medical data to surface patterns that support clinicians and researchers.</p></div></li>
+    <div class="life__copy">
+      <div class="shead" data-reveal><span class="shead__idx">07</span><span class="shead__tag">Life sciences</span><span class="shead__rule"></span></div>
+      <h2 class="stitle" data-split>From sequence <em>to candidate</em></h2>
+      <p class="slede" data-reveal>Biology has a language and chemistry has a grammar. We train models to read both, so the search for new medicines can move at the speed of computation.</p>
+      <ul class="life__list">
+        <li data-reveal style="--d:0"><span>01</span><div><h4>Molecular generation</h4><p>Generative models that propose novel, synthesizable candidates with target properties.</p></div></li>
+        <li data-reveal style="--d:1"><span>02</span><div><h4>Target &amp; protein modeling</h4><p>Predicting how molecules bind, fold and interact before anything reaches a lab.</p></div></li>
+        <li data-reveal style="--d:2"><span>03</span><div><h4>Clinical data analysis</h4><p>AI-assisted analysis that surfaces patterns to support clinicians and researchers.</p></div></li>
       </ul>
     </div>
   </div>
@@ -458,59 +499,57 @@
 
 <!-- ============ PROJECTS ============ -->
 <section class="section projects" id="projects" data-section>
-  <div class="shead" data-reveal>
-    <span class="shead__idx">06</span><span class="shead__tag">// Projects</span><span class="shead__rule"></span>
-  </div>
+  <div class="shead" data-reveal><span class="shead__idx">08</span><span class="shead__tag">Projects</span><span class="shead__rule"></span></div>
   <div class="stitle-wrap">
-    <h2 class="stitle" data-split>Deployed from <em>the forge</em></h2>
-    <p class="slede" data-reveal>What leaves the lab. One flagship is live today — more are cooling in the forge.</p>
+    <h2 class="stitle" data-split>Project <em>overview</em></h2>
+    <p class="slede" data-reveal>Systems built on our research. Each project applies results from the institute's research programs.</p>
   </div>
 
-  <article class="sanila" data-reveal id="sanilaCard">
-    <div class="sanila__border" aria-hidden="true"></div>
-    <div class="sanila__visual">
-      <canvas id="sanilaOrb" aria-hidden="true"></canvas>
-      <div class="sanila__ring sanila__ring--1"></div>
-      <div class="sanila__ring sanila__ring--2"></div>
-      <div class="sanila__ring sanila__ring--3"></div>
-      <div class="sanila__readout"><span>MODEL CLASS</span><b>FRONTIER</b></div>
-    </div>
-    <div class="sanila__body">
-      <div class="sanila__meta"><span>PROJECT 001</span><span class="live"><i class="pulse"></i>LIVE</span></div>
-      <h3 class="sanila__name" data-scramble>SANILA</h3>
-      <p class="sanila__tag">Uncensored frontier intelligence.</p>
-      <p class="sanila__desc">Sanila is Molten Institute's flagship large language model — an uncensored, frontier-class AI engineered to stand alongside GPT-6, Astra and Opus 5. Unfiltered reasoning, deep long-context understanding and step-based thinking, built for people who want real answers.</p>
-      <dl class="sanila__specs">
-        <div><dt>Class</dt><dd>Frontier LLM</dd></div>
-        <div><dt>Mode</dt><dd>Uncensored</dd></div>
-        <div><dt>Reasoning</dt><dd>Step-based</dd></div>
-        <div><dt>Access</dt><dd>sanila.org</dd></div>
-      </dl>
-      <div class="sanila__peers"><span>Built to rival</span><b>GPT-6</b><b>Astra</b><b>Opus 5</b></div>
-      <div class="sanila__cta">
-        <a class="btn btn--molten btn--xl" href="https://sanila.org" target="_blank" rel="noopener" data-launch data-magnetic data-cursor="LAUNCH"><span>Launch Sanila</span><i>↗</i></a>
-        <span class="sanila__url">sanila.org</span>
+  <div class="pgrid">
+    <article class="sanila" data-reveal id="sanilaCard">
+      <div class="sanila__border" aria-hidden="true"></div>
+      <div class="sanila__visual">
+        <canvas id="sanilaOrb" aria-hidden="true"></canvas>
+        <div class="sanila__ring sanila__ring--1"></div>
+        <div class="sanila__ring sanila__ring--2"></div>
+        <div class="sanila__ring sanila__ring--3"></div>
       </div>
-    </div>
-  </article>
+      <div class="sanila__body">
+        <div class="sanila__meta"><span>Project 01</span><span class="live"><i class="pulse"></i>Available</span></div>
+        <h3 class="sanila__name">Sanila</h3>
+        <p class="sanila__tag">An uncensored, frontier-class language model.</p>
+        <p class="sanila__desc">Sanila is Molten Institute's large language model, built to compete with leading frontier models such as GPT-6, Astra and Opus 5. It combines step-based reasoning, long-context understanding and an uncensored design for direct, unfiltered answers.</p>
+        <dl class="sanila__specs">
+          <div><dt>Type</dt><dd>Large language model</dd></div>
+          <div><dt>Reasoning</dt><dd>Step-based</dd></div>
+          <div><dt>Content policy</dt><dd>Uncensored</dd></div>
+          <div><dt>Access</dt><dd>sanila.org</dd></div>
+        </dl>
+        <div class="sanila__cta">
+          <a class="btn btn--primary" href="https://sanila.org" target="_blank" rel="noopener" data-magnetic><span>Visit Sanila</span><i>↗</i></a>
+          <span class="sanila__url">sanila.org</span>
+        </div>
+      </div>
+    </article>
 
-  <article class="classified" data-reveal>
-    <div class="classified__meta"><span>PROJECT 002</span><span class="classified__lock">● CLASSIFIED</span></div>
-    <div class="classified__body">
-      <h3><span class="redact" data-redact>NEXT PROJECT</span></h3>
-      <p><span class="redact">■■■■■■■■ ■■■■■ ■■■■■■■■■</span> incubating in the forge. <span class="redact">■■■■■■ ■■■■■■■■■■</span></p>
-    </div>
-    <div class="classified__temp"><span>Cooling</span><div class="classified__bar"><i></i></div></div>
-  </article>
+    <article class="pcard-more" data-reveal style="--d:1">
+      <span class="pcard-more__no">Project 02</span>
+      <div class="pcard-more__body">
+        <h3>Further projects</h3>
+        <p>Additional projects based on our research programs are in development and will be announced here.</p>
+      </div>
+      <div class="pcard-more__lines" aria-hidden="true"><i></i><i></i><i></i></div>
+    </article>
+  </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
-<section class="section final" id="contact" data-section>
-  <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>End of transmission</p>
-  <h2 class="final__title" data-split>The frontier is <em>molten.</em><br>Step in.</h2>
-  <div class="final__cta" data-reveal>
-    <a class="btn btn--molten btn--xl" href="https://sanila.org" target="_blank" rel="noopener" data-launch data-magnetic data-cursor="LAUNCH"><span>Launch Sanila</span><i>↗</i></a>
-    <a class="btn btn--ghost btn--xl" href="#top" data-magnetic data-cursor="ASCEND"><span>Return to core</span><i>↑</i></a>
+<!-- ============ CLOSING ============ -->
+<section class="section closing" id="contact" data-section>
+  <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>Molten Institute</p>
+  <h2 class="closing__title" data-split>Shaping what intelligence <em>becomes.</em></h2>
+  <div class="closing__cta" data-reveal>
+    <a class="btn btn--primary btn--lg" href="#research" data-magnetic><span>Explore research</span><i>→</i></a>
+    <a class="btn btn--ghost btn--lg" href="#top" data-magnetic><span>Back to top</span><i>↑</i></a>
   </div>
 </section>
 
@@ -521,50 +560,44 @@
   <div class="footer__big" id="footerBig" aria-hidden="true">MOLTEN</div>
   <div class="footer__row">
     <div class="footer__brand">
-      <svg class="nav__logo"><use href="#logo"/></svg>
-      <div><b>Molten Institute</b><span>AI Research · moltenresearch.com</span></div>
+      <img src="assets/img/logo-mark.png" alt="" width="40" height="37">
+      <div><b><strong>MOLTEN</strong> INSTITUTE</b><span>Advanced AI models &amp; innovation</span></div>
     </div>
     <nav class="footer__links" aria-label="Footer">
-      <a href="#mission">Mission</a><a href="#research">Research</a><a href="#forge">Forge</a><a href="#reasoning">Step Engine</a><a href="#bio">Bio</a><a href="#projects">Projects</a>
-      <a href="https://sanila.org" target="_blank" rel="noopener">Sanila ↗</a>
+      <a href="#research">Research</a><a href="#pipeline">Pipeline</a><a href="#finetuning">Fine-Tuning</a><a href="#attention">Attention</a><a href="#reasoning">Reasoning</a><a href="#life">Life Sciences</a><a href="#projects">Projects</a>
     </nav>
-    <div class="footer__legal">© <span id="year">2026</span> Molten Institute. All rights reserved.<br><span class="footer__hint">Press <kbd>Ctrl</kbd> <kbd>K</kbd> for the terminal.</span></div>
+    <div class="footer__legal">© <span id="year">2026</span> Molten Institute. All rights reserved.<br>moltenresearch.com</div>
   </div>
 </footer>
 
-<!-- ============ DOSSIER MODAL ============ -->
+<!-- ============ DOSSIER ============ -->
 <div class="dossier" id="dossier" role="dialog" aria-modal="true" aria-labelledby="dossierTitle" aria-hidden="true">
   <div class="dossier__backdrop" data-close-dossier></div>
   <div class="dossier__panel">
     <div class="dossier__head">
-      <span class="dossier__no" id="dossierNo">V-01</span>
-      <span class="dossier__class">DOSSIER · RESEARCH VECTOR</span>
-      <button class="dossier__close" data-close-dossier aria-label="Close dossier" data-cursor="CLOSE">✕</button>
+      <span class="dossier__no" id="dossierNo">01</span>
+      <span class="dossier__class">Research area</span>
+      <button class="dossier__close" data-close-dossier aria-label="Close">✕</button>
     </div>
     <h3 class="dossier__title" id="dossierTitle"></h3>
     <div class="dossier__content" id="dossierContent"></div>
   </div>
 </div>
 
-<!-- ============ COMMAND TERMINAL ============ -->
-<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command terminal" aria-hidden="true">
+<!-- ============ QUICK NAVIGATION ============ -->
+<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Quick navigation" aria-hidden="true">
   <div class="cmdk__backdrop" data-close-cmdk></div>
   <div class="cmdk__box">
-    <div class="cmdk__head"><span>MOLTEN//TERMINAL</span><span>v5.0</span></div>
-    <div class="cmdk__input"><span>›</span><input id="cmdInput" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false"></div>
+    <div class="cmdk__input"><span>⌕</span><input id="cmdInput" type="text" placeholder="Search sections and actions…" autocomplete="off" spellcheck="false"></div>
     <ul class="cmdk__list" id="cmdList"></ul>
-    <div class="cmdk__foot"><span>↑↓ navigate</span><span>↵ execute</span><span>esc close</span></div>
+    <div class="cmdk__foot"><span>↑↓ navigate</span><span>↵ open</span><span>esc close</span></div>
   </div>
 </div>
 
-<!-- ============ WARP (launch) ============ -->
-<div class="warp" id="warp" aria-hidden="true">
-  <canvas id="warpCanvas"></canvas>
-  <div class="warp__text"><span>ESTABLISHING UPLINK</span><b>SANILA.ORG</b></div>
-</div>
-
 <script src="assets/js/core.js" defer></script>
+<script src="assets/js/universe.js" defer></script>
 <script src="assets/js/viz.js" defer></script>
+<script src="assets/js/lab.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
