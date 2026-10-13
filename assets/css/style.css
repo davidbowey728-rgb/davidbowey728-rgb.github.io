@@ -646,12 +646,15 @@ input[type="range"]:disabled { opacity: .3; }
 .member__team { font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--mint); margin-bottom: 8px; }
 .member__name { font-family: var(--f-display); font-weight: 600; font-size: 20px; letter-spacing: -.02em; }
 .member__role { font-size: 14px; color: var(--muted); }
-.member--lead { display: grid; grid-template-columns: minmax(260px, 380px) 1fr; max-width: 1100px; }
+.lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.member--lead { display: grid; grid-template-columns: minmax(200px, .85fr) 1fr; }
+.team-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.member--lead .member__photo { aspect-ratio: auto; height: 100%; min-height: 380px; }
 .member--lead .member__photo::after { background: linear-gradient(90deg, transparent 70%, rgba(3, 7, 10, .6)); }
 .member--lead .member__body { justify-content: center; padding: clamp(28px, 4vw, 60px); gap: 6px; }
-.member--lead .member__name { font-size: clamp(32px, 3.6vw, 54px); letter-spacing: -.04em; line-height: 1.02; }
+.member--lead .member__name { font-size: clamp(28px, 2.6vw, 42px); letter-spacing: -.04em; line-height: 1.02; }
 .member--lead .member__role { font-size: 17px; color: var(--ice); }
-.member__summary { margin-top: 18px; max-width: 520px; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.member__summary { margin-top: 16px; max-width: 520px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 .member__more { margin-top: 28px; display: inline-flex; gap: 10px; font-size: 14px; font-weight: 500; color: var(--mint); }
 .member__more i { font-style: normal; transition: transform .4s var(--ease); }
 .member:hover .member__more i { transform: translateX(4px); }
@@ -683,10 +686,13 @@ input[type="range"]:disabled { opacity: .3; }
 @media (max-width: 1240px) {
   .team-teaser__strip { grid-template-columns: repeat(5, 1fr); }
   .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .lead-grid { grid-template-columns: 1fr; }
+  .member--lead { max-width: 900px; }
 }
 @media (max-width: 860px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid, .team-grid--3 { grid-template-columns: repeat(2, 1fr); }
   .member--lead { grid-template-columns: 1fr; }
+  .member--lead .member__photo { aspect-ratio: 4 / 4.4; height: auto; min-height: 0; }
   .profile__panel { grid-template-columns: 1fr; }
   .profile__photo { aspect-ratio: 4 / 3.4; min-height: 0; }
   .profile__photo img { object-position: 50% 22%; }

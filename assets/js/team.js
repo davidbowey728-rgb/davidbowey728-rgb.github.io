@@ -81,8 +81,8 @@
     var members = $$(".member"), lastFocus = null;
 
     function groupOf(m) {
-      var sec = m.closest(".team-group"), tag = sec && $(".shead__tag", sec);
-      return tag ? tag.textContent : "";
+      var sec = m.closest(".team-group"), tag = sec && $(".shead__tag", sec), dept = m.getAttribute("data-dept");
+      return (tag ? tag.textContent : "") + (dept ? " · " + dept : "");
     }
     function open(m, push) {
       lastFocus = m;

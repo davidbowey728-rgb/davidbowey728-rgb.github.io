@@ -58,56 +58,41 @@
   <a class="team-back" href="index.html">← Molten Institute</a>
   <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>Our Team</p>
   <h1 class="team-hero__title" data-reveal style="--d:1">The people behind<br><em>Molten Institute.</em></h1>
-  <p class="team-hero__lede" data-reveal style="--d:2">A focused team of researchers and engineers working across AI research, machine-learning infrastructure and security. Select a member to view their profile.</p>
+  <p class="team-hero__lede" data-reveal style="--d:2">Leadership, senior and junior staff working across AI research, machine-learning infrastructure and security. Select a member to view their profile.</p>
 </section>
 
 <!-- ============ LEADERSHIP ============ -->
 <section class="section team-group" aria-labelledby="g-lead">
   <div class="shead" data-reveal><span class="shead__idx">01</span><span class="shead__tag" id="g-lead">Leadership</span><span class="shead__rule"></span></div>
+  <div class="lead-grid">
 
-  <button type="button" class="member member--lead" id="caleb-eccleston" data-reveal>
-    <span class="member__photo"><img src="assets/img/team/caleb-eccleston.jpg" alt="Caleb Eccleston" width="640" height="800" loading="lazy"></span>
-    <span class="member__body">
-      <span class="member__team">Leadership</span>
-      <span class="member__name">Caleb Eccleston</span>
-      <span class="member__role">Director of Operations</span>
-      <span class="member__summary">Leads day-to-day operations at Molten Institute — coordinating research programs, infrastructure, partnerships and the teams that keep projects moving.</span>
-      <span class="member__more">View profile <i>→</i></span>
-    </span>
-    <template>
-      <p>Leads day-to-day operations at Molten Institute — coordinating research programs, infrastructure, partnerships and the teams that keep projects moving.</p>
-      <h4>Responsibilities</h4>
-      <div class="chips"><span>Operations</span><span>Program coordination</span><span>Partnerships</span><span>Team leadership</span></div>
-    </template>
-  </button>
-</section>
-
-<!-- ============ RESEARCH & ENGINEERING ============ -->
-<section class="section team-group" aria-labelledby="g-research">
-  <div class="shead" data-reveal><span class="shead__idx">02</span><span class="shead__tag" id="g-research">Research &amp; Engineering</span><span class="shead__rule"></span></div>
-  <div class="team-grid">
-
-    <button type="button" class="member" id="brendan-bell" data-reveal style="--d:0">
-      <span class="member__photo"><img src="assets/img/team/brendan-bell.jpg" alt="Brendan Bell" width="640" height="800" loading="lazy"></span>
+    <button type="button" class="member member--lead" id="caleb-eccleston" data-dept="Operations" data-reveal style="--d:0">
+      <span class="member__photo"><img src="assets/img/team/caleb-eccleston.jpg" alt="Caleb Eccleston" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
-        <span class="member__name">Brendan Bell</span>
-        <span class="member__role">Junior Research Engineer</span>
+        <span class="member__team">Operations</span>
+        <span class="member__name">Caleb Eccleston</span>
+        <span class="member__role">Director of Operations</span>
+        <span class="member__summary">Leads day-to-day operations at Molten Institute — coordinating research programs, infrastructure, partnerships and the teams that keep projects moving.</span>
+        <span class="member__more">View profile <i>→</i></span>
       </span>
       <template>
-        <p>Supports the research team across model training, evaluation and experiment infrastructure.</p>
-        <h4>Focus areas</h4>
-        <div class="chips"><span>Model training</span><span>Evaluation</span><span>Experiment infrastructure</span></div>
+        <p>Leads day-to-day operations at Molten Institute — coordinating research programs, infrastructure, partnerships and the teams that keep projects moving.</p>
+        <h4>Responsibilities</h4>
+        <div class="chips"><span>Operations</span><span>Program coordination</span><span>Partnerships</span><span>Team leadership</span></div>
       </template>
     </button>
 
-    <button type="button" class="member" id="soren-sterling" data-reveal style="--d:1">
+    <button type="button" class="member member--lead" id="soren-sterling" data-dept="Research" data-reveal style="--d:1">
       <span class="member__photo"><img src="assets/img/team/soren-sterling.jpg" alt="Soren Sterling" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">Research</span>
         <span class="member__name">Soren Sterling</span>
-        <span class="member__role">AI Research Engineer</span>
+        <span class="member__role">Assistant Director of Research</span>
+        <span class="member__summary">Helps direct the institute's research programs and leads work on adapting large language models through fine-tuning and training infrastructure.</span>
+        <span class="member__more">View profile <i>→</i></span>
       </span>
       <template>
-        <p>Works on adapting large language models — fine-tuning transformers, optimizing hyperparameters and maintaining training infrastructure.</p>
+        <p>Helps direct the institute's research programs and leads work on adapting large language models — fine-tuning transformers, optimizing hyperparameters and maintaining training infrastructure.</p>
         <h4>Core competencies <small>Intermediate</small></h4>
         <div class="chips"><span>AI research</span><span>Transformer fine-tuning</span><span>Hyperparameter optimization</span><span>PyTorch / TensorFlow infrastructure</span></div>
         <h4>Certifications &amp; coursework</h4>
@@ -115,11 +100,20 @@
       </template>
     </button>
 
-    <button type="button" class="member" id="elena-rostova" data-reveal style="--d:2">
+  </div>
+</section>
+
+<!-- ============ SENIOR STAFF ============ -->
+<section class="section team-group" aria-labelledby="g-senior">
+  <div class="shead" data-reveal><span class="shead__idx">02</span><span class="shead__tag" id="g-senior">Senior Staff</span><span class="shead__rule"></span></div>
+  <div class="team-grid team-grid--3">
+
+    <button type="button" class="member" id="elena-rostova" data-dept="ML Infrastructure" data-reveal style="--d:0">
       <span class="member__photo"><img src="assets/img/team/elena-rostova.jpg" alt="Elena Rostova" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">ML Infrastructure</span>
         <span class="member__name">Elena Rostova</span>
-        <span class="member__role">MLOps Engineer</span>
+        <span class="member__role">Senior Machine Learning Engineer</span>
       </span>
       <template>
         <p>Takes models from experiment to production: containerized training and serving pipelines, deployment and model-drift monitoring.</p>
@@ -130,34 +124,12 @@
       </template>
     </button>
 
-    <button type="button" class="member" id="mira-chen" data-reveal style="--d:3">
-      <span class="member__photo"><img src="assets/img/team/mira-chen.jpg" alt="Mira Chen" width="640" height="800" loading="lazy"></span>
-      <span class="member__body">
-        <span class="member__name">Mira Chen</span>
-        <span class="member__role">Data Engineer</span>
-      </span>
-      <template>
-        <p>Builds the data pipelines behind our models — ingestion, sanitization and feature engineering for anomaly-detection systems.</p>
-        <h4>Core competencies <small>Intermediate</small></h4>
-        <div class="chips"><span>Data ingestion &amp; sanitization</span><span>Feature engineering for anomaly detection</span></div>
-        <h4>Certifications &amp; coursework</h4>
-        <ul><li>HarvardX Data Science Professional Certificate</li><li>Fast.ai — Practical Deep Learning for Coders</li></ul>
-      </template>
-    </button>
-
-  </div>
-</section>
-
-<!-- ============ SECURITY & INFRASTRUCTURE ============ -->
-<section class="section team-group" aria-labelledby="g-security">
-  <div class="shead" data-reveal><span class="shead__idx">03</span><span class="shead__tag" id="g-security">Security &amp; Infrastructure</span><span class="shead__rule"></span></div>
-  <div class="team-grid">
-
-    <button type="button" class="member" id="julian-vance" data-reveal style="--d:0">
+    <button type="button" class="member" id="julian-vance" data-dept="Security" data-reveal style="--d:1">
       <span class="member__photo"><img src="assets/img/team/julian-vance.jpg" alt="Julian Vance" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">Security</span>
         <span class="member__name">Julian Vance</span>
-        <span class="member__role">Systems Security Engineer</span>
+        <span class="member__role">Senior Systems Security Engineer</span>
       </span>
       <template>
         <p>Focuses on low-level systems and network security, from systems programming in C, C++ and Rust to protocol and packet analysis.</p>
@@ -168,11 +140,12 @@
       </template>
     </button>
 
-    <button type="button" class="member" id="kaelen-voss" data-reveal style="--d:1">
+    <button type="button" class="member" id="kaelen-voss" data-dept="Security Operations" data-reveal style="--d:2">
       <span class="member__photo"><img src="assets/img/team/kaelen-voss.jpg" alt="Kaelen Voss" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">Security Operations</span>
         <span class="member__name">Kaelen Voss</span>
-        <span class="member__role">Detection &amp; Response Analyst</span>
+        <span class="member__role">Senior Security Operations Analyst</span>
       </span>
       <template>
         <p>Detects and responds to threats against institute systems through SIEM analytics, log-parser optimization and automated threat hunting.</p>
@@ -183,11 +156,50 @@
       </template>
     </button>
 
-    <button type="button" class="member" id="darius-thorne" data-reveal style="--d:2">
+  </div>
+</section>
+
+<!-- ============ JUNIOR STAFF ============ -->
+<section class="section team-group" aria-labelledby="g-junior">
+  <div class="shead" data-reveal><span class="shead__idx">03</span><span class="shead__tag" id="g-junior">Junior Staff</span><span class="shead__rule"></span></div>
+  <div class="team-grid">
+
+    <button type="button" class="member" id="brendan-bell" data-dept="Research" data-reveal style="--d:0">
+      <span class="member__photo"><img src="assets/img/team/brendan-bell.jpg" alt="Brendan Bell" width="640" height="800" loading="lazy"></span>
+      <span class="member__body">
+        <span class="member__team">Research</span>
+        <span class="member__name">Brendan Bell</span>
+        <span class="member__role">Junior Research Engineer</span>
+      </span>
+      <template>
+        <p>Supports the research team across model training, evaluation and experiment infrastructure.</p>
+        <h4>Focus areas</h4>
+        <div class="chips"><span>Model training</span><span>Evaluation</span><span>Experiment infrastructure</span></div>
+      </template>
+    </button>
+
+    <button type="button" class="member" id="mira-chen" data-dept="Data" data-reveal style="--d:1">
+      <span class="member__photo"><img src="assets/img/team/mira-chen.jpg" alt="Mira Chen" width="640" height="800" loading="lazy"></span>
+      <span class="member__body">
+        <span class="member__team">Data</span>
+        <span class="member__name">Mira Chen</span>
+        <span class="member__role">Junior Data Engineer</span>
+      </span>
+      <template>
+        <p>Builds the data pipelines behind our models — ingestion, sanitization and feature engineering for anomaly-detection systems.</p>
+        <h4>Core competencies <small>Intermediate</small></h4>
+        <div class="chips"><span>Data ingestion &amp; sanitization</span><span>Feature engineering for anomaly detection</span></div>
+        <h4>Certifications &amp; coursework</h4>
+        <ul><li>HarvardX Data Science Professional Certificate</li><li>Fast.ai — Practical Deep Learning for Coders</li></ul>
+      </template>
+    </button>
+
+    <button type="button" class="member" id="darius-thorne" data-dept="Security" data-reveal style="--d:2">
       <span class="member__photo"><img src="assets/img/team/darius-thorne.jpg" alt="Darius Thorne" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">Security</span>
         <span class="member__name">Darius Thorne</span>
-        <span class="member__role">Security Automation Engineer</span>
+        <span class="member__role">Junior Security Engineer</span>
       </span>
       <template>
         <p>Automates security and engineering workflows in Python, Bash and Go, and implements cryptographic primitives.</p>
@@ -198,11 +210,12 @@
       </template>
     </button>
 
-    <button type="button" class="member" id="lucian-mercer" data-reveal style="--d:3">
+    <button type="button" class="member" id="lucian-mercer" data-dept="Threat Intelligence" data-reveal style="--d:3">
       <span class="member__photo"><img src="assets/img/team/lucian-mercer.jpg" alt="Lucian Mercer" width="640" height="800" loading="lazy"></span>
       <span class="member__body">
+        <span class="member__team">Threat Intelligence</span>
         <span class="member__name">Lucian Mercer</span>
-        <span class="member__role">Threat Intelligence Analyst</span>
+        <span class="member__role">Junior Threat Intelligence Analyst</span>
       </span>
       <template>
         <p>Integrates threat-intelligence telemetry into our defenses and builds automation for defensive operations.</p>
