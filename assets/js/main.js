@@ -403,6 +403,7 @@
       { n: "Reasoning traces", d: "Interactive", f: go("reasoning") },
       { n: "Life sciences", d: "Section", f: go("life") },
       { n: "Projects", d: "Section", f: go("projects") },
+      { n: "Our team", d: "Page", f: function () { location.href = "team.html"; } },
       { n: "Run trace: physics", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("physics"); } },
       { n: "Run trace: medicine", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("medicine"); } },
       { n: "Run trace: ML debugging", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("debug"); } },
