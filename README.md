@@ -1,7 +1,7 @@
 # Molten Institute — moltenresearch.com
 
-Website for **Molten Institute**, an AI research institute working on large language models,
-fine-tuning, step-based reasoning, autonomous agents, interpretability and AI for medicine.
+Website for **Molten Institute**, an AI research institution focused on supporting U.S. government missions in
+national security, homeland security and public safety, and releasing AI products for the public.
 Home of **[Sanila](https://sanila.org)**.
 
 Pure HTML / CSS / JavaScript — no build step, no dependencies.

@@ -1,7 +1,7 @@
 /* ==========================================================================
    MOLTEN INSTITUTE — viz.js
    Section visualizations: research areas, training pipeline stages,
-   DNA helix, Sanila neural sphere.
+   controlled simulation, Sanila neural sphere.
    ========================================================================== */
 (function () {
   "use strict";
@@ -138,6 +138,30 @@
         bonds.forEach(function (b) { var A = P[b[0]], B = P[b[1]]; c.strokeStyle = rgba(C.mint, (0.25 + 0.3 * (1 - (A.z + B.z) / 4)).toFixed(3)); c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.stroke(); });
         P.slice().sort(function (a, b) { return b.z - a.z; }).forEach(function (p) {
           glowDot(c, p.x, p.y, (p.t === 1 ? 4 : 5.5) * p.k * 0.8, p.t === 2 ? C.ice : p.t === 3 ? C.deep : C.teal, 0.95);
+        });
+      }, card);
+    },
+
+    swarm: function (canvas, card) {
+      var P = [];
+      for (var i = 0; i < 90; i++) P.push({ x: Math.random(), y: Math.random(), vx: 0, vy: 0, life: Math.random() });
+      makeCanvas(canvas, function (c, w, h, t, dt, e) {
+        var gx = w * 0.82, gy = h * 0.42, ox = w * 0.48, oy = h * 0.42, orr = Math.min(w, h) * 0.13;
+        c.strokeStyle = rgba(C.teal, 0.45); c.beginPath(); c.arc(ox, oy, orr, 0, TAU); c.stroke();
+        c.fillStyle = rgba(C.teal, 0.08); c.fill();
+        c.strokeStyle = rgba(C.mint, 0.8); c.beginPath(); c.arc(gx, gy, 10 + Math.sin(t * 3), 0, TAU); c.stroke();
+        P.forEach(function (p) {
+          var px = p.x * w, py = p.y * h;
+          var dx = gx - px, dy = gy - py, d = Math.hypot(dx, dy) || 1;
+          p.vx += (dx / d) * 40 * dt * (1 + e); p.vy += (dy / d) * 40 * dt * (1 + e);
+          var qx = px - ox, qy = py - oy, q = Math.hypot(qx, qy) || 1;
+          if (q < orr * 1.6) { var f = (orr * 1.6 - q) * 6 * dt; p.vx += (qx / q) * f * 10; p.vy += (qy / q) * f * 10; }
+          p.vx *= 0.96; p.vy *= 0.96;
+          px += p.vx * dt; py += p.vy * dt;
+          p.x = px / w; p.y = py / h;
+          if (d < 12 || p.x < -0.05 || p.x > 1.05 || p.y < -0.05 || p.y > 1.05) { p.x = Math.random() * 0.12; p.y = 0.15 + Math.random() * 0.55; p.vx = p.vy = 0; }
+          c.fillStyle = rgba(d < 60 ? C.ice : C.mint, 0.75);
+          c.fillRect(px - 1, py - 1, 2, 2);
         });
       }, card);
     },
@@ -314,47 +338,119 @@
   };
 
   /* ==========================================================================
-     DNA HELIX
+     CONTROLLED SIMULATION — evolving agents (genetic algorithm)
      ========================================================================== */
-  function helix(canvas) {
-    var BASES = "ATGC", pairs = 46, seq = [];
-    for (var i = 0; i < pairs; i++) seq.push((Math.random() * 4) | 0);
-    var seqEl = document.getElementById("seqReadout"), affEl = document.getElementById("affReadout"), lastUpd = 0;
-    makeCanvas(canvas, function (c, w, h, t, dt, e, st) {
-      st.rot = (st.rot || 0) + dt * (0.5 + e * 0.8);
-      var cx = w / 2, R = Math.min(w * 0.26, 150), tilt = MI.mouse.sx * 0.5, pts = [];
-      for (var i = 0; i < pairs; i++) {
-        var f = i / (pairs - 1), y = h * 0.06 + f * h * 0.88, a = f * TAU * 2.4 + st.rot;
-        for (var s = 0; s < 2; s++) {
-          var ang = a + s * Math.PI, x = Math.cos(ang) * R, z = Math.sin(ang) * R;
-          pts.push({ i: i, s: s, x: cx + x * Math.cos(tilt) - (y - h / 2) * Math.sin(tilt) * 0.15, y: y, z: z });
-        }
+  function simulation(canvas) {
+    var N = MI.coarse ? 44 : 72, K = 28, SEG = 9, T = K * SEG, SPEED = 0.0062, ELITE = 0.2;
+    var START = { x: 0.08, y: 0.86 }, GOAL = { x: 0.88, y: 0.16, r: 0.05 };
+    var LAYOUTS = [
+      [{ x: 0.3, y: 0, w: 0.06, h: 0.6 }, { x: 0.58, y: 0.4, w: 0.06, h: 0.6 }],
+      [{ x: 0.3, y: 0.38, w: 0.06, h: 0.62 }, { x: 0.58, y: 0, w: 0.06, h: 0.58 }, { x: 0.36, y: 0.38, w: 0.12, h: 0.05 }]
+    ];
+    var layout = 0, obstacles = LAYOUTS[0], pop = [], agents = [], frame = 0, episode = 1, flash = 0, lastRate = 0, bestTrail = [];
+    var epEl = document.getElementById("simEpisode"), sucEl = document.getElementById("simSuccess");
+
+    function genome() { var g = []; for (var k = 0; k < K; k++) g.push(MI.rand(-1.9, 1.1)); return g; }
+    for (var i = 0; i < N; i++) pop.push(genome());
+    function spawn() {
+      agents = pop.map(function (g) { return { g: g, x: START.x, y: START.y, alive: true, done: false, at: T, trail: [[START.x, START.y]] }; });
+      frame = 0;
+    }
+    spawn();
+    function blocked(x, y) {
+      if (x < 0 || x > 1 || y < 0 || y > 1) return true;
+      for (var o = 0; o < obstacles.length; o++) { var b = obstacles[o]; if (x > b.x && x < b.x + b.w && y > b.y && y < b.y + b.h) return true; }
+      return false;
+    }
+    function step() {
+      var seg = Math.min(K - 1, Math.floor(frame / SEG));
+      for (var a = 0; a < agents.length; a++) {
+        var ag = agents[a];
+        if (!ag.alive || ag.done) continue;
+        var ang = ag.g[seg];
+        ag.x += Math.cos(ang) * SPEED; ag.y += Math.sin(ang) * SPEED;
+        if (blocked(ag.x, ag.y)) { ag.alive = false; continue; }
+        if (Math.hypot(ag.x - GOAL.x, ag.y - GOAL.y) < GOAL.r) { ag.done = true; ag.at = frame; }
+        if (frame % 3 === 0) ag.trail.push([ag.x, ag.y]);
       }
-      for (i = 0; i < pairs; i++) {
-        var A = pts[i * 2], B = pts[i * 2 + 1], depth = (A.z + B.z) / (2 * R), scan = Math.abs(((t * 0.25) % 1) * pairs - i) < 2;
-        c.strokeStyle = scan ? rgba(C.ice, 0.95) : rgba(C.teal, (0.14 + (1 - Math.abs(depth)) * 0.22).toFixed(3));
-        c.lineWidth = scan ? 1.6 : 1;
-        c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.stroke();
-      }
-      for (var s2 = 0; s2 < 2; s2++) {
-        c.strokeStyle = s2 ? rgba(C.ice, 0.35) : rgba(C.mint, 0.55); c.lineWidth = 1.4; c.beginPath();
-        for (i = 0; i < pairs; i++) { var p = pts[i * 2 + s2]; i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y); }
-        c.stroke();
-      }
-      c.globalCompositeOperation = "lighter";
-      c.font = "9px " + MONO; c.textAlign = "center";
-      pts.forEach(function (p) {
-        var k = (p.z / R + 1) / 2, r = 1.5 + k * 3.2, col = p.s ? C.ice : C.teal;
-        glowDot(c, p.x, p.y, r, col, 0.4 + k * 0.6);
-        if (k > 0.85 && p.i % 3 === 0) { c.fillStyle = rgba(C.ice, 0.6); c.fillText(BASES[(seq[p.i] + p.s * 2) % 4], p.x + (p.s ? 14 : -14), p.y + 3); }
+      frame++;
+    }
+    function evolve() {
+      agents.forEach(function (ag) {
+        var d = Math.hypot(ag.x - GOAL.x, ag.y - GOAL.y);
+        ag.fit = ag.done ? 2 + (1 - ag.at / T) : (1 / (1 + d * 9)) * (ag.alive ? 1 : 0.55);
       });
-      c.globalCompositeOperation = "source-over"; c.textAlign = "start";
-      if (t - lastUpd > 0.35) {
-        lastUpd = t;
-        var off = Math.floor(t * 3) % (pairs - 12), str = "";
-        for (var q = 0; q < 12; q++) { str += BASES[seq[off + q]]; if (q % 3 === 2 && q < 11) str += "·"; }
-        if (seqEl) seqEl.textContent = str;
-        if (affEl) affEl.textContent = "−" + (8.6 + Math.sin(t * 0.7) * 1.1 + Math.random() * 0.2).toFixed(1) + " kcal/mol";
+      agents.sort(function (a, b) { return b.fit - a.fit; });
+      lastRate = agents.filter(function (a) { return a.done; }).length / agents.length;
+      bestTrail = agents[0].trail.slice();
+      var elites = agents.slice(0, Math.max(2, Math.round(N * ELITE))).map(function (a) { return a.g; });
+      pop = elites.map(function (g) { return g.slice(); });
+      while (pop.length < N) {
+        var p1 = elites[(Math.random() * elites.length) | 0], p2 = elites[(Math.random() * elites.length) | 0], cut = (Math.random() * K) | 0;
+        pop.push(p1.map(function (v, k) {
+          var gene = k < cut ? v : p2[k];
+          return Math.random() < 0.14 ? gene + (Math.random() - 0.5) * 0.9 : gene;
+        }));
+      }
+      episode++;
+      // change the environment periodically to show adaptation
+      if (episode % 24 === 0) { layout = 1 - layout; obstacles = LAYOUTS[layout]; flash = 1; }
+      if (epEl) epEl.textContent = String(episode).padStart(3, "0");
+      if (sucEl) sucEl.textContent = Math.round(lastRate * 100) + "%";
+      spawn();
+    }
+
+    makeCanvas(canvas, function (c, w, h, t, dt, e) {
+      var steps = MI.reduced ? 1 : 2 + Math.round(e);
+      for (var s = 0; s < steps; s++) {
+        step();
+        var active = agents.some(function (a) { return a.alive && !a.done; });
+        if (frame >= T || !active) { evolve(); break; }
+      }
+      var X = function (v) { return v * w; }, Y = function (v) { return v * h; };
+      // grid
+      c.strokeStyle = rgba(C.ice, 0.035); c.lineWidth = 1; c.beginPath();
+      for (var gx = 0; gx <= 10; gx++) { c.moveTo(X(gx / 10), 0); c.lineTo(X(gx / 10), h); }
+      for (var gy = 0; gy <= 12; gy++) { c.moveTo(0, Y(gy / 12)); c.lineTo(w, Y(gy / 12)); }
+      c.stroke();
+      // obstacles
+      obstacles.forEach(function (b) {
+        c.fillStyle = rgba(C.teal, 0.1 + flash * 0.25); c.fillRect(X(b.x), Y(b.y), X(b.w), Y(b.h));
+        c.strokeStyle = rgba(C.teal, 0.55); c.strokeRect(X(b.x) + 0.5, Y(b.y) + 0.5, X(b.w) - 1, Y(b.h) - 1);
+      });
+      // best path of the previous generation
+      if (bestTrail.length > 1) {
+        c.strokeStyle = rgba(C.ice, 0.55); c.lineWidth = 1.6; c.setLineDash([4, 5]); c.beginPath();
+        bestTrail.forEach(function (p, k) { k ? c.lineTo(X(p[0]), Y(p[1])) : c.moveTo(X(p[0]), Y(p[1])); });
+        c.stroke(); c.setLineDash([]);
+      }
+      // trails + agents
+      c.lineWidth = 0.8;
+      agents.forEach(function (ag) {
+        if (ag.trail.length > 1) {
+          c.strokeStyle = ag.done ? rgba(C.mint, 0.35) : ag.alive ? rgba(C.teal, 0.22) : "rgba(255,120,120,.12)";
+          c.beginPath();
+          ag.trail.forEach(function (p, k) { k ? c.lineTo(X(p[0]), Y(p[1])) : c.moveTo(X(p[0]), Y(p[1])); });
+          c.lineTo(X(ag.x), Y(ag.y)); c.stroke();
+        }
+        c.fillStyle = ag.done ? rgba(C.ice, 1) : ag.alive ? rgba(C.mint, 0.9) : "rgba(255,120,120,.5)";
+        c.beginPath(); c.arc(X(ag.x), Y(ag.y), ag.done ? 2.6 : 2, 0, TAU); c.fill();
+      });
+      // start + goal
+      c.strokeStyle = rgba(C.ice, 0.5); c.strokeRect(X(START.x) - 7, Y(START.y) - 7, 14, 14);
+      var pr = Math.min(w, h) * GOAL.r * (1 + Math.sin(t * 3) * 0.08);
+      glowDot(c, X(GOAL.x), Y(GOAL.y), pr * 0.35, C.mint, 0.9);
+      c.strokeStyle = rgba(C.mint, 0.85); c.lineWidth = 1.2; c.beginPath(); c.arc(X(GOAL.x), Y(GOAL.y), pr, 0, TAU); c.stroke();
+      c.font = "10px " + MONO; c.fillStyle = rgba(C.ice, 0.55);
+      c.fillText("START", X(START.x) - 14, Y(START.y) + 22);
+      c.fillText("GOAL", X(GOAL.x) - 12, Y(GOAL.y) + pr + 16);
+      // progress bar for the current episode
+      c.fillStyle = rgba(C.ice, 0.06); c.fillRect(0, h - 3, w, 3);
+      c.fillStyle = rgba(C.mint, 0.85); c.fillRect(0, h - 3, w * Math.min(1, frame / T), 3);
+      if (flash > 0) {
+        c.font = "500 11px " + MONO; c.textAlign = "center"; c.fillStyle = rgba(C.ice, flash);
+        c.fillText("ENVIRONMENT CHANGED — ADAPTING", w / 2, h / 2);
+        c.textAlign = "start"; flash = Math.max(0, flash - dt * 0.5);
       }
     }, canvas.parentElement);
   }
@@ -413,7 +509,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("canvas[data-viz]").forEach(function (cv) { var fn = research[cv.getAttribute("data-viz")]; if (fn) fn(cv, cv.closest(".rcard")); });
     document.querySelectorAll("canvas[data-stage]").forEach(function (cv) { var fn = stages[cv.getAttribute("data-stage")]; if (fn) fn(cv); });
-    var hx = document.getElementById("helix"); if (hx) helix(hx);
+    var sc = document.getElementById("simCanvas"); if (sc) simulation(sc);
     var ob = document.getElementById("sanilaOrb"); if (ob) orb(ob);
   });
 })();

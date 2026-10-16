@@ -707,3 +707,48 @@ input[type="range"]:disabled { opacity: .3; }
   .member__name { font-size: 16px; }
   .member__role { font-size: 12px; }
 }
+
+/* ==========================================================================
+   ABOUT — mission statement
+   ========================================================================== */
+.about__mission { margin-top: 44px; max-width: 880px; font-size: clamp(17px, 1.45vw, 21px); line-height: 1.6; color: #b9c9cc; padding-left: 22px; border-left: 2px solid var(--mint); }
+
+/* ==========================================================================
+   GOVERNMENT PROGRAMS
+   ========================================================================== */
+.gov-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.gov-card {
+  position: relative; padding: 30px 28px 28px; border-radius: var(--r); overflow: hidden; isolation: isolate; min-height: 330px;
+  display: flex; flex-direction: column; border: 1px solid var(--line);
+  background: linear-gradient(165deg, rgba(12, 26, 32, .86), rgba(4, 9, 12, .92));
+  transition: border-color .5s, box-shadow .5s, transform .6s var(--ease), opacity 1.1s var(--ease);
+}
+.gov-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease); }
+.gov-card::after {
+  content: ""; position: absolute; z-index: -1; width: 340px; height: 340px; right: -150px; top: -150px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 70%, rgba(143, 211, 184, .16) 88%, transparent 100%);
+  opacity: 0; transition: opacity .6s; animation: sweep 4s linear infinite;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
+.gov-card:hover { border-color: rgba(143, 211, 184, .3); box-shadow: 0 30px 80px -24px rgba(28, 92, 116, .55); }
+.gov-card:hover::before { transform: scaleX(1); }
+.gov-card:hover::after { opacity: 1; }
+.gov-card__icon { width: 46px; height: 46px; fill: none; stroke: var(--mint); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 10px rgba(143, 211, 184, .35)); }
+.gov-card__icon .f { fill: var(--mint); stroke: none; }
+.gov-card__no { position: absolute; top: 30px; right: 28px; font-family: var(--f-mono); font-size: 11px; color: var(--dim); letter-spacing: .1em; }
+.gov-card h3 { margin-top: auto; padding-top: 34px; font-family: var(--f-display); font-weight: 600; font-size: clamp(21px, 1.8vw, 27px); line-height: 1.12; letter-spacing: -.025em; }
+.gov-card p { margin-top: 12px; color: var(--muted); font-size: 15px; }
+.gov-how { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: var(--r); background: rgba(4, 9, 12, .6); }
+.gov-how > div { padding: 26px 28px; }
+.gov-how > div + div { border-left: 1px solid var(--line); }
+.gov-how span { font-family: var(--f-mono); font-size: 11px; color: var(--mint); }
+.gov-how h4 { font-family: var(--f-display); font-weight: 600; font-size: 18px; letter-spacing: -.01em; margin: 8px 0 6px; }
+.gov-how p { color: var(--muted); font-size: 14px; }
+
+@media (max-width: 1240px) { .gov-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .gov-grid { grid-template-columns: 1fr; }
+  .gov-card { min-height: 0; }
+  .gov-how { grid-template-columns: 1fr; }
+  .gov-how > div + div { border-left: 0; border-top: 1px solid var(--line); }
+}

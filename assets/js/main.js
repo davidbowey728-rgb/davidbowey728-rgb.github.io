@@ -289,16 +289,16 @@
       ],
       answer: "30 minutes."
     },
-    medicine: {
-      prompt: "We generated 10,000 candidate molecules for an oral drug. What should we screen first?",
+    security: {
+      prompt: "An account shows 40 failed logins in five minutes, then a successful login from a new country. What should we do?",
       steps: [
-        { k: "Decompose", t: "The drug is oral, so it must be absorbed through the gut — bioavailability gates everything else.", s: 0.95 },
-        { k: "Propose", t: "Rank all candidates by predicted potency and synthesize the top 100.", bad: true, note: "Verifier: potent but poorly absorbed compounds waste synthesis budget. Pruned." },
-        { k: "Recall", t: "Apply drug-likeness filters such as Lipinski's rule of five: MW ≤ 500, logP ≤ 5, ≤ 5 H-bond donors, ≤ 10 acceptors.", s: 0.94 },
-        { k: "Plan", t: "Filter on drug-likeness and predicted permeability, flag toxicity risks, then rank the remainder by potency.", s: 0.93 },
-        { k: "Verify", t: "The funnel removes likely failures early, so compute and lab time go to viable candidates. ✓", s: 0.95 }
+        { k: "Observe", t: "Many failures followed by one success from an unfamiliar location fits a password-guessing or credential-stuffing pattern.", s: 0.95 },
+        { k: "Propose", t: "Block all traffic from that country.", bad: true, note: "Verifier: overly broad — it disrupts legitimate users and is easily bypassed with a VPN. Pruned." },
+        { k: "Hypothesize", t: "The account's password is likely compromised; the same source may be targeting other accounts.", s: 0.93 },
+        { k: "Plan", t: "End the active session, force a password reset with MFA, and search logs for the source IP and related indicators across all accounts.", s: 0.95 },
+        { k: "Verify", t: "Correlated logs show the same IP targeted 12 other accounts — all now protected, with no further successful logins. ✓", s: 0.96 }
       ],
-      answer: "Screen for drug-likeness and permeability first, remove toxicity risks, then optimize potency — and validate the shortlist experimentally."
+      answer: "Treat it as a likely account compromise: end the session, reset credentials with MFA, and hunt for the same indicators across the environment."
     },
     debug: {
       prompt: "A fine-tuning run is stable, then the loss becomes NaN after about 2,000 steps. Why?",
@@ -396,16 +396,17 @@
     var CMDS = [
       { n: "Overview", d: "Section", f: go("top") },
       { n: "About the institute", d: "Section", f: go("about") },
+      { n: "Government programs", d: "Section", f: go("government") },
       { n: "Research areas", d: "Section", f: go("research") },
       { n: "Training pipeline", d: "Section", f: go("pipeline") },
       { n: "Fine-Tuning Lab", d: "Interactive", f: go("finetuning") },
       { n: "Attention visualizer", d: "Interactive", f: go("attention") },
       { n: "Reasoning traces", d: "Interactive", f: go("reasoning") },
-      { n: "Life sciences", d: "Section", f: go("life") },
-      { n: "Projects", d: "Section", f: go("projects") },
+      { n: "Simulation lab", d: "Interactive", f: go("simulation") },
+      { n: "Public releases", d: "Section", f: go("projects") },
       { n: "Our team", d: "Page", f: function () { location.href = "team.html"; } },
       { n: "Run trace: physics", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("physics"); } },
-      { n: "Run trace: medicine", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("medicine"); } },
+      { n: "Run trace: cyber defense", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("security"); } },
       { n: "Run trace: ML debugging", d: "Reasoning", f: function () { go("reasoning")(); MI.runTrace("debug"); } },
       { n: "Trigger a nova", d: "Universe", f: function () { go("top")(); setTimeout(function () { MI.nova(innerWidth * MI.rand(0.3, 0.7), innerHeight * MI.rand(0.3, 0.6), 1.2); }, 500); } }
     ];
