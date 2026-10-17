@@ -77,7 +77,7 @@
 
   /* ---------- member profiles ---------- */
   function profiles() {
-    var dlg = $("#profile"), img = $("#profileImg"), nameEl = $("#profileName"), roleEl = $("#profileRole"), teamEl = $("#profileTeam"), content = $("#profileContent");
+    var dlg = $("#profile"), nameEl = $("#profileName"), roleEl = $("#profileRole"), teamEl = $("#profileTeam"), content = $("#profileContent");
     var members = $$(".member"), lastFocus = null;
 
     function groupOf(m) {
@@ -86,8 +86,6 @@
     }
     function open(m, push) {
       lastFocus = m;
-      var photo = $(".member__photo img", m);
-      img.src = photo.getAttribute("src"); img.alt = photo.alt;
       nameEl.textContent = $(".member__name", m).textContent;
       roleEl.textContent = $(".member__role", m).textContent;
       teamEl.textContent = groupOf(m);

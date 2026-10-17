@@ -752,3 +752,37 @@ input[type="range"]:disabled { opacity: .3; }
   .gov-how { grid-template-columns: 1fr; }
   .gov-how > div + div { border-left: 0; border-top: 1px solid var(--line); }
 }
+
+/* ==========================================================================
+   TEAM — text-only layout (no photos)
+   ========================================================================== */
+.team-teaser__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 44px; }
+.tname { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 20px 52px 20px 22px; border-radius: 14px; border: 1px solid var(--line); background: linear-gradient(165deg, rgba(12, 26, 32, .7), rgba(4, 9, 12, .85)); transition: border-color .4s, background .4s, transform .5s var(--ease); }
+.tname__tier { font-family: var(--f-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+.tname b { font-family: var(--f-display); font-weight: 600; font-size: 18px; letter-spacing: -.015em; }
+.tname small { font-size: 13px; color: var(--muted); }
+.tname i { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-style: normal; color: var(--dim); transition: color .3s, transform .4s var(--ease); }
+.tname:hover { border-color: rgba(143, 211, 184, .35); transform: translateY(-2px); }
+.tname:hover i { color: var(--mint); transform: translate(4px, -50%); }
+
+.member { min-height: 210px; }
+.member::after { content: ""; position: absolute; left: 20px; top: 0; width: 34px; height: 2px; background: var(--grad); transition: width .6s var(--ease); }
+.member:hover::after { width: calc(100% - 40px); }
+.member__body { flex: 1; padding: 28px 22px 26px; gap: 6px; }
+.member__name { margin-top: auto; }
+.member .member__team { margin-bottom: 0; }
+.member__body::after { content: "View profile →"; margin-top: 18px; font-size: 13px; font-weight: 500; color: var(--dim); transition: color .3s; }
+.member:hover .member__body::after { color: var(--mint); }
+.member--lead { display: flex; min-height: 300px; }
+.member--lead .member__body { padding: clamp(30px, 3.5vw, 48px); justify-content: flex-start; }
+.member--lead .member__body::after { display: none; }
+.member--lead .member__name { margin-top: 26px; font-size: clamp(30px, 3vw, 46px); }
+
+.profile__panel { grid-template-columns: 1fr; width: min(700px, 100%); }
+
+@media (max-width: 1020px) { .team-teaser__list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .team-teaser__list { grid-template-columns: 1fr; }
+  .member { min-height: 170px; }
+  .member__body { padding: 22px 16px 18px; }
+}
